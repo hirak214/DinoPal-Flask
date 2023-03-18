@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Home</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/nicepage.css') }}" media="screen">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/home.css') }}" media="screen">
+
+    <!-- <script class="u-script" type="text/javascript" src="{{url_for('static', filename='js/jquery-1.9.1.min.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static', filename='js/nicepage.js')}}" defer=""></script> -->
+
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <body data-home-page="/" data-home-page-title="Home" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-palette-4-base" id="sec-b6c3"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="/" class="u-image u-logo u-image-1" data-image-width="1280" data-image-height="1280">
+          <img src="https://cdn.dribbble.com/users/208716/screenshots/3705674/media/60f82913939267c5c4111acfaef40e04.jpg?compress=1&resize=800x600&vertical=top" class="u-logo-image u-logo-image-1">
+        </a>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-a8a9">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-col">
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-1">
+                    <div class="u-container-layout u-container-layout-1">
+                      <div class="u-align-center u-form u-form-1">
+
+                        <form action="/get_data" class="u-clearfix u-form-horizontal u-form-spacing-12 u-inner-form" style="padding: 17px;" method="POST" name="form_get_data">
+                          <div class="u-form-group u-form-name u-label-none">
+                            <label for="name-ef64" class="u-label">Request Number</label>
+                            <input type="text" placeholder="Request Number..." id="request_num" name="request_num" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20 u-input-1" required="" autofocus="autofocus">
+                          </div>
+                          <div class="u-form-email u-form-group u-label-none">
+                            <label for="email-ef64" class="u-label">Job Number</label>
+                            <input type="text" placeholder="Job Number..." id="job_num" name="job_num" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-20 u-input-2" required="">
+                          </div>
+                          <div class="u-form-group u-form-radiobutton u-label-none u-form-group-3">
+                            <label class="u-label">Radios</label>
+                            <div class="u-form-radio-button-wrapper">
+                              <div class="u-input-row">
+                                <input id="field-6b60" type="radio" name="machine" value="machine1" class="u-field-input" checked="checked" data-calc="machine1">
+                                <label class="u-field-label" for="field-6b60">Micro</label>
+                              </div>
+                              <div class="u-input-row">
+                                <input id="field-2731" type="radio" name="machine" value="machine2" class="u-field-input" data-calc="machine2">
+                                <label class="u-field-label" for="field-2731">Fish</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="u-form-group u-form-submit u-label-none">
+                            <input type="submit" value="Get Data" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
+                          </div>
+                          <!-- <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div> -->
+                          <!-- <div class="u-form-send-error u-form-send-message">#FormSendError</div> -->
+                          <!-- <input type="hidden" value="" name="recaptchaResponse"> -->
+                          <!-- <input type="hidden" name="formServices" value="0007cce92f3ca541d114b38df0844f3d"> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-30">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                    <div class="u-container-layout u-valign-top-xs u-container-layout-2">
+                      <h4 class="u-text u-text-default u-text-1">Get Data</h4>
+                      <div class="u-table u-table-responsive u-table-1">
+                        <table class="u-table-entity">
+                          <colgroup>
+                            <col width="33.3%">
+                            <col width="33.3%">
+                            <col width="33.400000000000006%">
+                          </colgroup>
+                          <tbody class="u-table-alt-palette-1-light-3 u-table-body">
+                            <tr style="height: 46px;">
+                              <td class="u-table-cell">AHC Tag ID</td>
+                              <td class="u-table-cell">Declared Purity</td>
+                              <td class="u-table-cell">Value</td>
+                            </tr>
+                            {% for item in res_data['data'][:5] %}
+                              <tr style="height: 46px;">
+                                <td class="u-table-cell">{{ item['tag_id'] }}</td>
+                                <td class="u-table-cell">{{ item['declare_purity'] }}</td>
+                                <td class="u-table-cell">{{ item['gold'] }}</td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <h5>Number of Pieces: {{ res_data['length_data'] }}</h5>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-3">
+                    <div class="u-container-layout u-container-layout-3">
+                      <h4 class="u-text u-text-default u-text-2">Put Data<span style="font-weight: 700;"></span>
+                      </h4>
+                      <div class="u-form u-form-2">
+                        <form action="/generate_data" class="u-clearfix u-form-horizontal u-form-spacing-10 u-inner-form" method="POST" name="form_generate" style="padding: 10px;">
+                          <div class="u-form-group u-form-number u-form-number-layout-range u-form-group-5">
+                            <label for="range-6c03" class="u-label">Volume</label>
+                            <div class="u-input-row" data-value="0">
+                              <input value="0" min="0" max="100" step="1" type="range" placeholder="" id="range-6c03" name="volume" class="u-input u-range">
+                            </div>
+                          </div>
+                          <div class="u-align-left u-form-group u-form-submit">
+                            <input type="submit" value="Generate Data" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
+                          </div>
+                   
+                        </form>
+                      </div>
+                      <div class="u-table u-table-responsive u-table-2">
+                        <table class="u-table-entity">
+                          <colgroup>
+                            <col width="33.3%">
+                            <col width="33.3%">
+                            <col width="33.400000000000006%">
+                          </colgroup>
+                          <tbody class="u-table-alt-palette-1-light-3 u-table-body">
+                            <tr style="height: 45px;">
+                              <td class="u-table-cell">AHC Tag ID</td>
+                              <td class="u-table-cell">Declared Purity</td>
+                              <td class="u-table-cell">Value</td>
+                            </tr>
+                            {% for item in put_data['data'][:5] %}
+                              <tr style="height: 46px;">
+                                <td class="u-table-cell">{{ item['tag_id'] }}</td>
+                                <td class="u-table-cell">{{ item['declare_purity'] }}</td>
+                                <td class="u-table-cell">{{ item['gold'] }}</td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <h5>Generated Readings: {{ put_data['generated_readings'] }}</h5>
+                      <form action="/send_data" method="post">
+                        <input type="submit" value="Send Data" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-section-2" id="sec-5fcb">
+      <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+        <div class="fr-view u-align-left u-border-2 u-border-grey-75 u-clearfix u-hover-feature u-rich-text u-text u-text-1">
+          <h5 style="text-align: left;">Status</h5>
+          <p>{{ res_data }}</p>
+          <p>{{ put_data['message'] }}</p>
+
+        </div>
+      </div>
+      
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-7681"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">DinoPal - created with &lt;3</p>
+      </div></footer>
+
+  
+</body>
+</html>
