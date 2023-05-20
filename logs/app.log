@@ -23,3 +23,7 @@
 2023-05-20 20:12:42,838 - INFO - 127.0.0.1 - - [20/May/2023 20:12:42] "GET / HTTP/1.1" 200 -
 2023-05-20 20:12:42,866 - INFO - 127.0.0.1 - - [20/May/2023 20:12:42] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
 2023-05-20 20:12:42,870 - INFO - 127.0.0.1 - - [20/May/2023 20:12:42] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-20 20:14:39,863 - INFO -  * Detected change in '/Users/hirakdesai/Documents/Workspace/flask/dinoPal/app.py', reloading
+2023-05-20 20:14:39,894 - INFO -  * Restarting with stat
+2023-05-20 20:14:40,246 - WARNING -  * Debugger is active!
+2023-05-20 20:14:40,252 - INFO -  * Debugger PIN: 671-764-265

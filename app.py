@@ -237,6 +237,7 @@ def send_data():
                         log_dicts_to_csv(final_xrf_data, job_data['job_num'], job_data['request_num'], machine_name)
                         clear_cache_file("job_data.json")
                         clear_cache_file("put_data.json")
+                        clear_cache_file("get_result.json")
                         logging.info(f'Job {job_data["job_num"]} completed successfully from {machine_name}')
                         return render_template("home.html", res_data={'data':['Complete']}, put_data={'data':['completed']})
                     else:
