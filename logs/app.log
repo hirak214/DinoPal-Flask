@@ -1,0 +1,25 @@
+2023-05-20 20:10:30,588 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2023-05-20 20:10:30,588 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-20 20:10:30,589 - INFO -  * Restarting with stat
+2023-05-20 20:10:30,830 - WARNING -  * Debugger is active!
+2023-05-20 20:10:30,839 - INFO -  * Debugger PIN: 671-764-265
+2023-05-20 20:10:36,754 - INFO - 127.0.0.1 - - [20/May/2023 20:10:36] "GET / HTTP/1.1" 200 -
+2023-05-20 20:10:36,783 - INFO - 127.0.0.1 - - [20/May/2023 20:10:36] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:36,784 - INFO - 127.0.0.1 - - [20/May/2023 20:10:36] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:47,740 - INFO - 127.0.0.1 - - [20/May/2023 20:10:47] "POST /get_data HTTP/1.1" 200 -
+2023-05-20 20:10:47,765 - INFO - 127.0.0.1 - - [20/May/2023 20:10:47] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:47,771 - INFO - 127.0.0.1 - - [20/May/2023 20:10:47] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:48,777 - INFO - 127.0.0.1 - - [20/May/2023 20:10:48] "POST /generate_data HTTP/1.1" 200 -
+2023-05-20 20:10:48,801 - INFO - 127.0.0.1 - - [20/May/2023 20:10:48] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:48,803 - INFO - 127.0.0.1 - - [20/May/2023 20:10:48] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:51,862 - INFO - 127.0.0.1 - - [20/May/2023 20:10:51] "POST /send_data HTTP/1.1" 200 -
+2023-05-20 20:10:51,886 - INFO - 127.0.0.1 - - [20/May/2023 20:10:51] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-20 20:10:51,889 - INFO - 127.0.0.1 - - [20/May/2023 20:10:51] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-20 20:11:50,701 - INFO -  * Detected change in '/Users/hirakdesai/Documents/Workspace/flask/dinoPal/app.py', reloading
+2023-05-20 20:11:50,736 - INFO -  * Restarting with stat
+2023-05-20 20:11:51,067 - WARNING -  * Debugger is active!
+2023-05-20 20:11:51,074 - INFO -  * Debugger PIN: 671-764-265
+2023-05-20 20:12:42,838 - INFO - 127.0.0.1 - - [20/May/2023 20:12:42] "GET / HTTP/1.1" 200 -
+2023-05-20 20:12:42,866 - INFO - 127.0.0.1 - - [20/May/2023 20:12:42] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-20 20:12:42,870 - INFO - 127.0.0.1 - - [20/May/2023 20:12:42] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -

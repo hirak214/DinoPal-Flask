@@ -59,7 +59,7 @@
                             </div>
                           </div>
                           <div class="u-form-group u-form-submit u-label-none">
-                            <input type="submit" value="Get Data" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
+                            <input type="submit" value="Get Data" name="getdata" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
                           </div>
                           <!-- <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div> -->
                           <!-- <div class="u-form-send-error u-form-send-message">#FormSendError</div> -->
@@ -115,7 +115,7 @@
                             </div>
                           </div>
                           <div class="u-align-left u-form-group u-form-submit">
-                            <input type="submit" value="Generate Data" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
+                            <input type="submit" value="Generate Data" name="generatedata" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
                           </div>
                    
                         </form>
@@ -145,7 +145,7 @@
                       </div>
                       <h5>Generated Readings: {{ put_data['generated_readings'] }}</h5>
                       <form action="/send_data" method="post">
-                        <input type="submit" value="Send Data" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
+                        <input type="submit" value="Send Data" name="senddata" class="u-active-palette-4-base u-border-none u-btn u-btn-round u-btn-submit u-button-style u-radius-20 u-btn-1">
                       </form>
                     </div>
                   </div>
@@ -175,4 +175,33 @@
 
   
 </body>
+<!-- <script>
+  // Get the form and buttons
+const form = document.querySelector('form');
+const button1 = document.querySelector('input[name="getdata"]');
+const button2 = document.querySelector('input[name="generatedata"]');
+const button3 = document.querySelector('input[name="senddata"]');
+
+// Disable buttons 2 and 3 initially
+button2.disabled = true;
+button3.disabled = true;
+
+// When button 1 is clicked, enable button 2
+button1.addEventListener('click', () => {
+  button2.disabled = false;
+});
+
+// When button 2 is clicked, enable button 3
+button2.addEventListener('click', () => {
+  button3.disabled = false;
+});
+
+// When button 3 is clicked, reset the form
+button3.addEventListener('click', () => {
+  form.reset();
+  button2.disabled = true;
+  button3.disabled = true;
+});
+
+</script> -->
 </html>
