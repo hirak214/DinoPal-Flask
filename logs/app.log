@@ -27,3 +27,20 @@
 2023-05-20 20:14:39,894 - INFO -  * Restarting with stat
 2023-05-20 20:14:40,246 - WARNING -  * Debugger is active!
 2023-05-20 20:14:40,252 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 12:23:22,336 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2023-05-27 12:23:22,338 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-27 12:23:22,339 - INFO -  * Restarting with stat
+2023-05-27 12:23:22,547 - WARNING -  * Debugger is active!
+2023-05-27 12:23:22,556 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 12:23:50,739 - INFO - 127.0.0.1 - - [27/May/2023 12:23:50] "GET / HTTP/1.1" 200 -
+2023-05-27 12:23:50,896 - INFO - 127.0.0.1 - - [27/May/2023 12:23:50] "GET /static/css/home.css HTTP/1.1" 200 -
+2023-05-27 12:23:50,896 - INFO - 127.0.0.1 - - [27/May/2023 12:23:50] "GET /static/css/nicepage.css HTTP/1.1" 200 -
+2023-05-27 12:23:51,237 - INFO - 127.0.0.1 - - [27/May/2023 12:23:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2023-05-27 12:25:34,338 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106453543 and job number 108346248 
+2023-05-27 12:25:34,345 - INFO - 127.0.0.1 - - [27/May/2023 12:25:34] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 12:25:34,414 - INFO - 127.0.0.1 - - [27/May/2023 12:25:34] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 12:25:34,414 - INFO - 127.0.0.1 - - [27/May/2023 12:25:34] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 12:25:41,568 - INFO - 127.0.0.1 - - [27/May/2023 12:25:41] "POST /generate_data HTTP/1.1" 200 -
+2023-05-27 12:25:41,614 - INFO - 127.0.0.1 - - [27/May/2023 12:25:41] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 12:25:41,614 - INFO - 127.0.0.1 - - [27/May/2023 12:25:41] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -

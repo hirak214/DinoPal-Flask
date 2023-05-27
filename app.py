@@ -10,9 +10,10 @@ import pathlib
 from datetime import datetime
 import logging
 
-directory_path = str(pathlib.Path().resolve()).replace("non_related", "") + "/"
 
-logging.basicConfig(filename=f'{directory_path}/logs/app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+app_log_path = os.path.join(os.getcwd(), 'logs', 'app.log')
+logging.basicConfig(filename=app_log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('my_logger')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler('app.log')
@@ -180,7 +181,8 @@ def generate_metal_values(purity):
         return {'status': False, 'message': "Error in generate_metal_values, purity not 18 or 22", 'data': None}
 
 def generate_filenames(jobid):
-    return f"{directory_path}xrfcsv/{jobid}.csv"
+    file_path = os.join(os.getcwd(), 'xrfcsv', f'{jobid}.csv')
+    return file_path
 
 def reorder_dict(dictionary, fieldnames):
     return {key: dictionary[key] for key in fieldnames}
