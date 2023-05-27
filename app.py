@@ -181,40 +181,45 @@ def generate_metal_values(purity):
         return {'status': False, 'message': "Error in generate_metal_values, purity not 18 or 22", 'data': None}
 
 def generate_filenames(jobid):
-    file_path = os.join(os.getcwd(), 'xrfcsv', f'{jobid}.csv')
+    file_path = os.path.join(os.getcwd(), 'xrfcsv', f'{jobid}.csv')
     return file_path
 
 def reorder_dict(dictionary, fieldnames):
     return {key: dictionary[key] for key in fieldnames}
 
 def log_dicts_to_csv(data, jobid, reqno, machine):
-    filename = generate_filenames(jobid)
-    fieldnames = ['tag_id', 'declare_purity', 'reading', 'gold', 'copper', 'silver', 'cadmium', 'iridium',
-                  'nickel', 'osmium', 'platinum', 'palladium', 'rhodium', 'ruthenium']
-    file_exists = os.path.isfile(filename)
+    try:
+        filename = generate_filenames(jobid)
+        print(filename)
+        fieldnames = ['tag_id', 'declare_purity', 'reading', 'gold', 'copper', 'silver', 'cadmium', 'iridium',
+                    'nickel', 'osmium', 'platinum', 'palladium', 'rhodium', 'ruthenium']
+        file_exists = os.path.isfile(filename)
 
-    with open(filename, 'a', newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        with open(filename, 'a', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-        if not file_exists:
-            writer.writeheader()  # Write the header row if the file is newly created
+            if not file_exists:
+                writer.writeheader()  # Write the header row if the file is newly created
 
-        for d in data:
-            reordered_dict = reorder_dict(d, fieldnames)
-            writer.writerow(reordered_dict)  # Write each reordered dictionary as a row in the CSV file
+            for d in data:
+                reordered_dict = reorder_dict(d, fieldnames)
+                writer.writerow(reordered_dict)  # Write each reordered dictionary as a row in the CSV file
 
-    with open(filename, "a", newline='') as file:
-        csvwrite = csv.writer(file)
-        jobid = f"Job Id: {jobid}"
-        reqno = f"Req No: {reqno}"
-        count = f"Number of pieces: {len(data)/2}"
-        today = datetime.today()
-        date = f"{today.day}/{today.month}/{today.year}"
-        donedate = f"Completion Date: {date}"
-        machine = f"Machine: {machine}"
-        data = [jobid, reqno, count, donedate, machine]
-        csvwrite.writerow(data)
-    
+        with open(filename, "a", newline='') as file:
+            csvwrite = csv.writer(file)
+            jobid = f"Job Id: {jobid}"
+            reqno = f"Req No: {reqno}"
+            count = f"Number of pieces: {len(data)/2}"
+            today = datetime.today()
+            date = f"{today.day}/{today.month}/{today.year}"
+            donedate = f"Completion Date: {date}"
+            machine = f"Machine: {machine}"
+            data = [jobid, reqno, count, donedate, machine]
+            csvwrite.writerow(data)
+        return {'status': True, 'message': "Data logged sucessfuly", 'data': None}
+    except Exception as e:
+        logging.error(f'Error in log_dicts_to_csv, {e}')
+        return {'status': False, 'message': "Error in log_dicts_to_csv", 'data': e}
 
 
 @app.route("/send_data", methods=["POST"])
@@ -236,12 +241,16 @@ def send_data():
                         machine_name = "FISCHER"
                     send_data = make_api_call(job_data['request_num'], job_data['job_num'], machine_data, final_xrf_data)
                     if send_data['status']:
-                        log_dicts_to_csv(final_xrf_data, job_data['job_num'], job_data['request_num'], machine_name)
-                        clear_cache_file("job_data.json")
-                        clear_cache_file("put_data.json")
-                        clear_cache_file("get_result.json")
-                        logging.info(f'Job {job_data["job_num"]} completed successfully from {machine_name}')
-                        return render_template("home.html", res_data={'data':['Complete']}, put_data={'data':['completed']})
+                        res_log_dicts = log_dicts_to_csv(final_xrf_data, job_data['job_num'], job_data['request_num'], machine_name)
+                        if res_log_dicts['status']:
+                            clear_cache_file("job_data.json")
+                            clear_cache_file("put_data.json")
+                            clear_cache_file("get_result.json")
+                            logging.info(f'Job {job_data["job_num"]} completed successfully from {machine_name}')
+                            return render_template("home.html", res_data={'data':['Complete']}, put_data={'data':['completed']})
+                        else:
+                            logging.error(f'Error in send_data, {res_log_dicts}')
+                            return res_log_dicts
                     else:
                         logging.error(f'Error in send_data, {send_data}')
                         return send_data

@@ -44,3 +44,104 @@
 2023-05-27 12:25:41,568 - INFO - 127.0.0.1 - - [27/May/2023 12:25:41] "POST /generate_data HTTP/1.1" 200 -
 2023-05-27 12:25:41,614 - INFO - 127.0.0.1 - - [27/May/2023 12:25:41] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
 2023-05-27 12:25:41,614 - INFO - 127.0.0.1 - - [27/May/2023 12:25:41] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 13:56:20,942 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2023-05-27 13:56:20,942 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-27 13:56:20,943 - INFO -  * Restarting with stat
+2023-05-27 13:56:21,152 - WARNING -  * Debugger is active!
+2023-05-27 13:56:21,159 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 13:56:29,890 - INFO - 127.0.0.1 - - [27/May/2023 13:56:29] "GET / HTTP/1.1" 200 -
+2023-05-27 13:56:30,056 - INFO - 127.0.0.1 - - [27/May/2023 13:56:30] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 13:56:30,056 - INFO - 127.0.0.1 - - [27/May/2023 13:56:30] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 13:57:24,908 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106538847 and job number 108488056 
+2023-05-27 13:57:24,918 - INFO - 127.0.0.1 - - [27/May/2023 13:57:24] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 13:57:24,987 - INFO - 127.0.0.1 - - [27/May/2023 13:57:24] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 13:57:24,987 - INFO - 127.0.0.1 - - [27/May/2023 13:57:24] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 13:57:26,476 - INFO - 127.0.0.1 - - [27/May/2023 13:57:26] "POST /generate_data HTTP/1.1" 200 -
+2023-05-27 13:57:26,533 - INFO - 127.0.0.1 - - [27/May/2023 13:57:26] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 13:57:26,534 - INFO - 127.0.0.1 - - [27/May/2023 13:57:26] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 13:57:30,876 - ERROR - Error in send_data, Expecting value: line 1 column 1 (char 0)
+2023-05-27 13:57:30,876 - ERROR - Error in send_data, {'status': False, 'message': 'Error in send_data', 'data': JSONDecodeError('Expecting value: line 1 column 1 (char 0)')}
+2023-05-27 13:57:30,888 - INFO - 127.0.0.1 - - [27/May/2023 13:57:30] "[35m[1mPOST /send_data HTTP/1.1[0m" 500 -
+2023-05-27 13:57:30,948 - INFO - 127.0.0.1 - - [27/May/2023 13:57:30] "GET /send_data?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2023-05-27 13:57:30,950 - INFO - 127.0.0.1 - - [27/May/2023 13:57:30] "GET /send_data?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2023-05-27 13:57:30,967 - INFO - 127.0.0.1 - - [27/May/2023 13:57:30] "GET /send_data?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2023-05-27 13:57:31,026 - INFO - 127.0.0.1 - - [27/May/2023 13:57:31] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-05-27 14:08:34,200 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2023-05-27 14:08:34,200 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-27 14:08:34,201 - INFO -  * Restarting with stat
+2023-05-27 14:08:34,422 - WARNING -  * Debugger is active!
+2023-05-27 14:08:34,428 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 14:08:42,538 - INFO - 127.0.0.1 - - [27/May/2023 14:08:42] "GET / HTTP/1.1" 200 -
+2023-05-27 14:08:42,593 - INFO - 127.0.0.1 - - [27/May/2023 14:08:42] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:08:42,594 - INFO - 127.0.0.1 - - [27/May/2023 14:08:42] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:09:44,188 - ERROR - Error in getting data from server, [{'Error': 'No data found !! Please Check Your Job no and Req No '}]
+2023-05-27 14:09:44,189 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106538847 and job number 108488056 
+2023-05-27 14:09:44,189 - ERROR - Error in getting data from server, Data Does not Exist
+2023-05-27 14:09:44,190 - INFO - 127.0.0.1 - - [27/May/2023 14:09:44] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 14:09:59,075 - INFO - 127.0.0.1 - - [27/May/2023 14:09:59] "GET / HTTP/1.1" 200 -
+2023-05-27 14:09:59,096 - INFO - 127.0.0.1 - - [27/May/2023 14:09:59] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:09:59,096 - INFO - 127.0.0.1 - - [27/May/2023 14:09:59] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:10:45,652 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106538849 and job number 108488114 
+2023-05-27 14:10:45,659 - INFO - 127.0.0.1 - - [27/May/2023 14:10:45] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 14:10:45,715 - INFO - 127.0.0.1 - - [27/May/2023 14:10:45] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:10:45,716 - INFO - 127.0.0.1 - - [27/May/2023 14:10:45] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:10:47,699 - INFO - 127.0.0.1 - - [27/May/2023 14:10:47] "POST /generate_data HTTP/1.1" 200 -
+2023-05-27 14:10:47,747 - INFO - 127.0.0.1 - - [27/May/2023 14:10:47] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:10:47,748 - INFO - 127.0.0.1 - - [27/May/2023 14:10:47] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:11:52,475 - INFO - 127.0.0.1 - - [27/May/2023 14:11:52] "[31m[1mGET /generate_data HTTP/1.1[0m" 405 -
+2023-05-27 14:16:31,934 - INFO - 127.0.0.1 - - [27/May/2023 14:16:31] "GET / HTTP/1.1" 200 -
+2023-05-27 14:16:32,022 - INFO - 127.0.0.1 - - [27/May/2023 14:16:32] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:16:32,022 - INFO - 127.0.0.1 - - [27/May/2023 14:16:32] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:19:26,615 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106538849 and job number 108488114 
+2023-05-27 14:19:26,622 - INFO - 127.0.0.1 - - [27/May/2023 14:19:26] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 14:19:26,682 - INFO - 127.0.0.1 - - [27/May/2023 14:19:26] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:19:26,683 - INFO - 127.0.0.1 - - [27/May/2023 14:19:26] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:19:29,183 - INFO - 127.0.0.1 - - [27/May/2023 14:19:29] "POST /generate_data HTTP/1.1" 200 -
+2023-05-27 14:19:29,236 - INFO - 127.0.0.1 - - [27/May/2023 14:19:29] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:19:29,238 - INFO - 127.0.0.1 - - [27/May/2023 14:19:29] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:19:35,379 - ERROR - Error in send_data, module 'os' has no attribute 'join'
+2023-05-27 14:19:35,396 - INFO - 127.0.0.1 - - [27/May/2023 14:19:35] "[35m[1mPOST /send_data HTTP/1.1[0m" 500 -
+2023-05-27 14:19:35,490 - INFO - 127.0.0.1 - - [27/May/2023 14:19:35] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-05-27 14:19:35,492 - INFO - 127.0.0.1 - - [27/May/2023 14:19:35] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-05-27 14:19:35,523 - INFO - 127.0.0.1 - - [27/May/2023 14:19:35] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-05-27 14:20:34,484 - INFO -  * Detected change in '/Users/hirakdesai/Documents/Workspace/flask/dinoPal/app.py', reloading
+2023-05-27 14:20:34,528 - INFO -  * Restarting with stat
+2023-05-27 14:20:34,894 - WARNING -  * Debugger is active!
+2023-05-27 14:20:34,903 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 14:21:45,296 - INFO -  * Detected change in '/Users/hirakdesai/Documents/Workspace/flask/dinoPal/app.py', reloading
+2023-05-27 14:21:45,333 - INFO -  * Restarting with stat
+2023-05-27 14:21:45,655 - WARNING -  * Debugger is active!
+2023-05-27 14:21:45,662 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 14:21:47,363 - INFO - 127.0.0.1 - - [27/May/2023 14:21:47] "POST /generate_data HTTP/1.1" 200 -
+2023-05-27 14:21:47,402 - INFO - 127.0.0.1 - - [27/May/2023 14:21:47] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:21:47,402 - INFO - 127.0.0.1 - - [27/May/2023 14:21:47] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:21:48,461 - INFO - 127.0.0.1 - - [27/May/2023 14:21:48] "GET / HTTP/1.1" 200 -
+2023-05-27 14:21:48,513 - INFO - 127.0.0.1 - - [27/May/2023 14:21:48] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:21:48,514 - INFO - 127.0.0.1 - - [27/May/2023 14:21:48] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:21:56,497 - ERROR - Error in getting data from server, [{'Error': 'No data found !! Please Check Your Job no and Req No '}]
+2023-05-27 14:21:56,497 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106538849 and job number 108488114 
+2023-05-27 14:21:56,497 - ERROR - Error in getting data from server, Data Does not Exist
+2023-05-27 14:21:56,497 - INFO - 127.0.0.1 - - [27/May/2023 14:21:56] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 14:22:25,999 - INFO - got data from {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'} of request number 106538849 and job number 108488115 
+2023-05-27 14:22:26,007 - INFO - 127.0.0.1 - - [27/May/2023 14:22:26] "POST /get_data HTTP/1.1" 200 -
+2023-05-27 14:22:26,103 - INFO - 127.0.0.1 - - [27/May/2023 14:22:26] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:22:26,104 - INFO - 127.0.0.1 - - [27/May/2023 14:22:26] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:22:28,085 - INFO - 127.0.0.1 - - [27/May/2023 14:22:28] "POST /generate_data HTTP/1.1" 200 -
+2023-05-27 14:22:28,134 - INFO - 127.0.0.1 - - [27/May/2023 14:22:28] "[36mGET /static/css/nicepage.css HTTP/1.1[0m" 304 -
+2023-05-27 14:22:28,136 - INFO - 127.0.0.1 - - [27/May/2023 14:22:28] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2023-05-27 14:22:36,744 - ERROR - Error in log_dicts_to_csv, module 'os' has no attribute 'join'
+2023-05-27 14:22:36,745 - ERROR - Error in send_data, {'status': False, 'message': 'Error in log_dicts_to_csv', 'data': AttributeError("module 'os' has no attribute 'join'")}
+2023-05-27 14:22:36,759 - INFO - 127.0.0.1 - - [27/May/2023 14:22:36] "[35m[1mPOST /send_data HTTP/1.1[0m" 500 -
+2023-05-27 14:22:36,825 - INFO - 127.0.0.1 - - [27/May/2023 14:22:36] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-05-27 14:22:36,828 - INFO - 127.0.0.1 - - [27/May/2023 14:22:36] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-05-27 14:22:36,841 - INFO - 127.0.0.1 - - [27/May/2023 14:22:36] "[36mGET /send_data?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-05-27 14:24:01,116 - INFO -  * Detected change in '/Users/hirakdesai/Documents/Workspace/flask/dinoPal/app.py', reloading
+2023-05-27 14:24:01,147 - INFO -  * Restarting with stat
+2023-05-27 14:24:01,382 - WARNING -  * Debugger is active!
+2023-05-27 14:24:01,386 - INFO -  * Debugger PIN: 671-764-265
+2023-05-27 14:24:14,885 - INFO -  * Detected change in '/Users/hirakdesai/Documents/Workspace/flask/dinoPal/app.py', reloading
+2023-05-27 14:24:14,916 - INFO -  * Restarting with stat
+2023-05-27 14:24:15,140 - WARNING -  * Debugger is active!
+2023-05-27 14:24:15,145 - INFO -  * Debugger PIN: 671-764-265
