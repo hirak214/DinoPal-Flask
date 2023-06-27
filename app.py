@@ -47,7 +47,13 @@ def get_data():
             # res_data_from_server = get_local_data()
             # if valid data returned
             if res_data_from_server['status'] == True:
-                # csching the data
+                # caching the data
+
+                # # ---------------
+                # # limiting data to 1 entry, single entry for testing
+                # res_data_from_server['data'] = [res_data_from_server['data'][0]]
+                # # ---------------
+
                 res_cache = put_cache("get_data.json", res_data_from_server['data'])
                 if res_cache['status']:
                     res_cache = put_cache("job_data.json", data)
@@ -146,7 +152,7 @@ def generate_xrf_reading(get_result):
 
                 send_temp['reading'] = f"{j}"
                 send_temp.pop('date')
-                send_temp['declare_purity'] = send_temp['declare_purity'][3:]
+                send_temp['declare_purity'] = send_temp['declare_purity'][3:6]
                 send_data.append(send_temp)
         if len(send_data) == len_get_result_start * 2:
             return {'status': True, 'message': "Data generated sucessfuly", 'data': send_data}
@@ -162,7 +168,7 @@ def generate_metal_values(purity):
     values = {}
     if purity == str(22):
         while True:
-            values['au'] = round(random.uniform(916.90, 918.90), 3)
+            values['au'] = round(random.uniform(916.77, 917.80), 3)
             values['ag'] = round(random.uniform(12.5, 20.0), 3)
             values['zn'] = round(random.uniform(6, 7), 3)
             values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
@@ -249,17 +255,17 @@ def send_data():
                             logging.info(f'Job {job_data["job_num"]} completed successfully from {machine_name}')
                             return render_template("home.html", res_data={'data':['Complete']}, put_data={'data':['completed']})
                         else:
-                            logging.error(f'Error in send_data, {res_log_dicts}')
+                            logging.error(f'Error in send_data - logging dictionaries, {res_log_dicts}')
                             return res_log_dicts
                     else:
-                        logging.error(f'Error in send_data, {send_data}')
+                        logging.error(f'Error in send_data - making api call, {send_data}')
                         return send_data
                 else:
-                    logging.error(f'Error in send_data, {res_final_xrf_data}')
+                    logging.error(f'Error in send_data - loading final xrf data, {res_final_xrf_data}')
                     return res_final_xrf_data
     except Exception as e:
         logging.error(f'Error in send_data, {e}')
-        return {'status': False, 'message': "Error in send_data", 'data': e}
+        return {'status': False, 'message': "Error in send_data - whole", 'data': e}
 
 def make_api_call(request_number, job_number, machine_data, final_xrf_data):
     try:
@@ -279,7 +285,7 @@ def make_api_call(request_number, job_number, machine_data, final_xrf_data):
             return {'status': False, 'message': "Error in send_data, status code not 200", 'data': res.json()}
     except Exception as e:
         logging.error(f'Error in send_data, {e}')
-        return {'status': False, 'message': "Error in send_data", 'data': e}
+        return {'status': False, 'message': "Error in make_api_call", 'data': e}
 
 def put_cache(filename, data):
     try:
