@@ -361,6 +361,4 @@ def clear_cache_file(filename):
         logger.exception(f"Exception in clearing cache file {filename}: {str(e)}")
 
 if __name__ == "__main__":
-    port = 5003
-    logger.info(f"Running on 127.0.0.1:{port}")
-    app.run(debug=True, port=port)
+    app.run(debug=True, port=5003, host='0.0.0.0')
