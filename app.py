@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect
 import requests
-
-from config import JSON_DATA_FISCHER, JSON_DATA_MICROSPEC, API_URL
 import json
 import random
 import csv
@@ -9,92 +7,101 @@ import os
 import pathlib
 from datetime import datetime
 import logging
+from config import JSON_DATA_FISCHER, JSON_DATA_MICROSPEC, API_URL
 
+# Define the log file path
+log_dir = os.path.join(os.getcwd(), 'logs')
+os.makedirs(log_dir, exist_ok=True)  # Create the logs directory if it doesn't exist
+app_log_path = os.path.join(log_dir, 'app.log')
 
-
-app_log_path = os.path.join(os.getcwd(), 'logs', 'app.log')
-logging.basicConfig(filename=app_log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Configure the logger
 logger = logging.getLogger('my_logger')
 logger.setLevel(logging.DEBUG)
-handler = logging.FileHandler('app.log')
+
+# Create a file handler that logs to 'app.log'
+file_handler = logging.FileHandler(app_log_path)
+file_handler.setLevel(logging.DEBUG)  # Log all levels to the file
+
+# Create a formatter and set it for the handler
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+file_handler.setFormatter(formatter)
+
+# Clear any existing handlers and add the file handler
+logger.handlers = []
+logger.addHandler(file_handler)
+
+# Suppress default logging to terminal
+logging.getLogger().handlers = []
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
-    return render_template("home.html", res_data={'data':['Lesgo']}, put_data={'data':['Lesgo']})
+    logger.info("Rendering home page.")
+    return render_template("home.html", res_data={'data': ['Ready to use']}, put_data={'data': ['Ready']})
 
-# function to get and send data to the table from the api
 @app.route("/get_data", methods=["POST"])
 def get_data():
-    # check if method is post
     if request.method == "POST":
-        # convert data from form to dictionary
         data = request.form.to_dict()
-        # check if not data has any null values
+        logger.debug(f"Received form data: {data}")
+
         if not is_dict_empty(data):
-            # check which machine is to be used
-            if data["machine"] == "machine1": machine_data = JSON_DATA_MICROSPEC
-            elif data["machine"] == "machine2": machine_data = JSON_DATA_FISCHER
-            else: return {'status': False, 'message': 'Selected Machine does not exist', 'data': None}
-            # get data from api
+            machine_data = None
+            if data["machine"] == "machine1":
+                machine_data = JSON_DATA_MICROSPEC
+            elif data["machine"] == "machine2":
+                machine_data = JSON_DATA_FISCHER
+            else:
+                logger.warning("Selected Machine does not exist.")
+                return {'status': False, 'message': 'Selected Machine does not exist', 'data': None}
+
             res_data_from_server = get_data_from_server(data['request_num'], data['job_num'], machine_data)
-            logging.info(f'got data from {machine_data} of request number {data["request_num"]} and job number {data["job_num"]} ')
-            # res_data_from_server = get_local_data()
-            # if valid data returned
-            if res_data_from_server['status'] == True:
-                # caching the data
+            logger.info(f"Data fetched for request_num {data['request_num']} and job_num {data['job_num']}.")
 
-                # # ---------------
-                # # limiting data to 1 entry, single entry for testing
-                # res_data_from_server['data'] = [res_data_from_server['data'][0]]
-                # # ---------------
-
+            if res_data_from_server['status']:
                 res_cache = put_cache("get_data.json", res_data_from_server['data'])
                 if res_cache['status']:
                     res_cache = put_cache("job_data.json", data)
                     if res_cache['status']:
-
-                        # extracting data from res
                         res_data = res_data_from_server
-                        res_data['status'] = "Data Received"  # set status as data received
-                        res_data['length_data'] = len(res_data['data'])  # set length of data
-                        res_data['data'] = res_data['data']  # set data to first 5 rows
-                        return render_template("home.html", res_data=res_data, put_data={'data':['Lesgo']})
+                        res_data['status'] = "Data Received"
+                        res_data['length_data'] = len(res_data['data'])
+                        return render_template("home.html", res_data=res_data, put_data={'data': ['Lesgo']})
                     else:
-                        logging.error(f'Error in putting data in job_data.json, {res_cache["message"]}')
+                        logger.error(f"Error in putting data in job_data.json: {res_cache['message']}")
                         return res_cache
                 else:
-                    logging.error(f'Error in putting data in get_data.json, {res_cache["message"]}')
+                    logger.error(f"Error in putting data in get_data.json: {res_cache['message']}")
                     return res_cache
             else:
-                logging.error(f'Error in getting data from server, {res_data_from_server["message"]}')
+                logger.error(f"Error in getting data from server: {res_data_from_server['message']}")
                 return res_data_from_server
         else:
-            return render_template("home.html") 
-
-
+            logger.warning("Form data contains null values.")
+            return render_template("home.html")
 
 def get_data_from_server(request_number, job_number, machine_data):
     try:
         get_url = API_URL + f"reqno={request_number}&jobno={job_number}"
+        print(get_url)
+        logger.debug(f"Making API request to: {get_url} with data: {machine_data}")
         res = requests.get(get_url, json=machine_data)
+        logger.debug(f"Raw response content: {res.text}")  # Log raw response content
+
         if res.status_code == 200:
             if res.json()[0] != {'Error': 'No data found !! Please Check Your Job no and Req No '}:
-                return {'status': True, 'message': "Data fetched sucessfuly", 'data': res.json()}
+                logger.info("Data fetched successfully from API.")
+                return {'status': True, 'message': "Data fetched successfully", 'data': res.json()}
             else:
-                logging.error(f'Error in getting data from server, {res.json()}')
+                logger.warning(f"No data found for the provided request number and job number.")
                 return {'status': False, 'message': "Data Does not Exist", 'data': None}
         else:
-            logging.error(f'Error in getting data from server, {res.status_code}')
+            logger.error(f"API request returned status code {res.status_code}: {res.text}")
             return {'status': False, 'message': f"Got status code {res.status_code}", 'data': None}
     except Exception as e:
-        logging.error(f'Error in getting data from server, {e}')
-        return {'status': False, 'message': e, 'data': e}
+        logger.exception(f"Exception occurred while fetching data from server: {str(e)}")
+        return {'status': False, 'message': str(e), 'data': None}
 
 
 def is_dict_empty(d):
@@ -102,38 +109,42 @@ def is_dict_empty(d):
         for value in d.values():
             if value != "":
                 return False
+        logger.info("Dictionary is empty.")
         return True
     except Exception as e:
-        logging.error(f'Error in is_dict_empty, {e}')
+        logger.exception(f"Exception in is_dict_empty: {str(e)}")
         return {'status': False, 'message': "Error in is_dict_empty", 'data': e}
 
-# function to get and send data to the table from the api
 @app.route("/generate_data", methods=["POST"])
 def generate_data():
     try:
         if request.method == "POST":
             data = request.form.to_dict()
+            logger.debug(f"Received data for generating: {data}")
+
             get_result = get_cache("get_data.json")
             if get_result['status']:
-                res_data = {'status': True, 'message': "Data re-fetched sucessfuly", 'data': get_result['data']}
-                res_data['length_data'] = len(res_data['data'])  # set length of data
+                res_data = {'status': True, 'message': "Data re-fetched successfully", 'data': get_result['data']}
+                res_data['length_data'] = len(res_data['data'])
+
                 send_data = generate_xrf_reading(get_result['data'])
                 if send_data['status']:
                     put_result = put_cache("put_data.json", send_data['data'])
                     if put_result['status']:
                         send_data['generated_readings'] = len(send_data['data'])
+                        logger.info("Data generated and saved successfully.")
                         return render_template("home.html", res_data=send_data, put_data=send_data)
                     else:
-                        logging.error(f'Error in putting data in put_data.json, {put_result["message"]}')
+                        logger.error(f"Error in putting data in put_data.json: {put_result['message']}")
                         return put_result
             else:
-                logging.error(f'Error in getting data from get_data.json, {get_result["message"]}')
+                logger.error(f"Error in getting data from cache: {get_result['message']}")
                 return get_result
         else:
-            logging.error(f'Error in generate_data, Please use POST method')
+            logger.warning("Method used is not POST for generating data.")
             return {'status': False, 'message': "Please use POST method", 'data': None}
     except Exception as e:
-        logging.error(f'Error in generate_data, {e}')
+        logger.exception(f"Exception in generate_data: {str(e)}")
         return {'status': False, 'message': "Error in generate_data", 'data': e}
 
 def generate_xrf_reading(get_result):
@@ -155,40 +166,54 @@ def generate_xrf_reading(get_result):
                 send_temp['declare_purity'] = send_temp['declare_purity'][3:6]
                 send_data.append(send_temp)
         if len(send_data) == len_get_result_start * 2:
-            return {'status': True, 'message': "Data generated sucessfuly", 'data': send_data}
+            logger.info("XRF readings generated successfully.")
+            return {'status': True, 'message': "Data generated successfully", 'data': send_data}
         else:
-            logging.error(f'Error in generate_xrf_reading, not 2 readings generated for all')
-            return {'status': False, 'message': "Error in generate_xrf_reading, not 2 readings generated for all", 'data': 
-            None}
+            logger.error("Not 2 readings generated for all data.")
+            return {'status': False, 'message': "Error in generate_xrf_reading, not 2 readings generated for all", 'data': None}
     except Exception as e:
-        logging.error(f'Error in generate_xrf_reading, {e}')
+        logger.exception(f"Exception in generate_xrf_reading: {str(e)}")
         return {'status': False, 'message': "Error in generate_xrf_reading", 'data': e}
 
 def generate_metal_values(purity):
-    values = {}
-    if purity == str(22):
-        while True:
-            values['au'] = round(random.uniform(916.77, 917.80), 3)
-            values['ag'] = round(random.uniform(12.5, 20.0), 3)
-            values['zn'] = round(random.uniform(6, 7), 3)
-            values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
-            if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
-                return values
-    elif purity == str(18):
-        while True:
-            values['au'] = round(random.uniform(750.5, 755.0), 3)
-            values['ag'] = round(random.uniform(12.5, 20.0), 3)
-            values['zn'] = round(random.uniform(6, 7), 3)
-            values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
-            if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
-                return values
-    else:
-        logging.error(f'Error in generate_metal_values, purity not 18 or 22')
-        return {'status': False, 'message': "Error in generate_metal_values, purity not 18 or 22", 'data': None}
+    try:
+        values = {}
+        if purity == str(22):
+            while True:
+                values['au'] = round(random.uniform(916.77, 917.80), 3)
+                values['ag'] = round(random.uniform(12.5, 20.0), 3)
+                values['zn'] = round(random.uniform(6, 7), 3)
+                values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
+                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
+                    return values
+        elif purity == str(18):
+            while True:
+                values['au'] = round(random.uniform(750.5, 755.0), 3)
+                values['ag'] = round(random.uniform(12.5, 20.0), 3)
+                values['zn'] = round(random.uniform(6, 7), 3)
+                values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
+                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
+                    return values
+        elif purity == str(14):
+            while True:
+                values['au'] = round(random.uniform(585.3, 595.0), 3)
+                values['ag'] = round(random.uniform(100.0, 400.0), 3)
+                values['zn'] = round(random.uniform(20.0, 70.0), 3)
+                values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
+                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
+                    return values
+        else:
+            logger.error(f"Purity {purity} not valid. Must be 14, 18, or 22.")
+            return {'status': False, 'message': "Error in generate_metal_values, purity not 14, 18 or 22", 'data': None}
+    except Exception as e:
+        logger.exception(f"Exception in generate_metal_values: {str(e)}")
+        return {'status': False, 'message': "Error in generate_metal_values", 'data': e}
 
 def generate_filenames(jobid):
-    file_path = os.path.join(os.getcwd(), 'xrfcsv', f'{jobid}.csv')
-    return file_path
+    directory = os.path.join(os.getcwd(), 'xrfcsv')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    return os.path.join(directory, f'{jobid}.csv')
 
 def reorder_dict(dictionary, fieldnames):
     return {key: dictionary[key] for key in fieldnames}
@@ -196,15 +221,15 @@ def reorder_dict(dictionary, fieldnames):
 def log_dicts_to_csv(data, jobid, reqno, machine):
     try:
         filename = generate_filenames(jobid)
-        print(filename)
+        logger.debug(f"Saving data to {filename}")
         fieldnames = ['tag_id', 'declare_purity', 'reading', 'gold', 'copper', 'silver', 'cadmium', 'iridium',
-                    'nickel', 'osmium', 'platinum', 'palladium', 'rhodium', 'ruthenium']
+                      'nickel', 'osmium', 'platinum', 'palladium', 'rhodium', 'ruthenium']
         file_exists = os.path.isfile(filename)
 
         with open(filename, 'a', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
             if not file_exists:
+                logger.debug("Writing CSV header.")
                 writer.writeheader()  # Write the header row if the file is newly created
 
             for d in data:
@@ -213,20 +238,20 @@ def log_dicts_to_csv(data, jobid, reqno, machine):
 
         with open(filename, "a", newline='') as file:
             csvwrite = csv.writer(file)
-            jobid = f"Job Id: {jobid}"
-            reqno = f"Req No: {reqno}"
-            count = f"Number of pieces: {len(data)/2}"
+            jobid_info = f"Job Id: {jobid}"
+            reqno_info = f"Req No: {reqno}"
+            count = f"Number of pieces: {len(data) / 2}"
             today = datetime.today()
             date = f"{today.day}/{today.month}/{today.year}"
             donedate = f"Completion Date: {date}"
-            machine = f"Machine: {machine}"
-            data = [jobid, reqno, count, donedate, machine]
-            csvwrite.writerow(data)
-        return {'status': True, 'message': "Data logged sucessfuly", 'data': None}
+            machine_info = f"Machine: {machine}"
+            metadata = [jobid_info, reqno_info, count, donedate, machine_info]
+            csvwrite.writerow(metadata)  # Write additional metadata as a new row
+        logger.info(f"Data logged successfully for jobid: {jobid}")
+        return {'status': True, 'message': "Data logged successfully", 'data': None}
     except Exception as e:
-        logging.error(f'Error in log_dicts_to_csv, {e}')
+        logger.exception(f"Exception in log_dicts_to_csv: {str(e)}")
         return {'status': False, 'message': "Error in log_dicts_to_csv", 'data': e}
-
 
 @app.route("/send_data", methods=["POST"])
 def send_data():
@@ -235,16 +260,23 @@ def send_data():
             res_job_data = get_cache("job_data.json")
             if res_job_data['status']:
                 job_data = res_job_data['data']
+                logger.debug(f"Job data loaded: {job_data}")
+
                 res_final_xrf_data = get_cache("put_data.json")
                 if res_final_xrf_data['status']:
                     final_xrf_data = res_final_xrf_data['data']
-                    # check which machine is to be used
+                    logger.debug(f"Final XRF data loaded: {final_xrf_data}")
+
                     if job_data["machine"] == "machine1":
                         machine_data = JSON_DATA_MICROSPEC
                         machine_name = "MICROSPEC"
                     elif job_data["machine"] == "machine2":
                         machine_data = JSON_DATA_FISCHER
                         machine_name = "FISCHER"
+                    else:
+                        logger.error("Invalid machine specified.")
+                        return {'status': False, 'message': "Invalid machine specified.", 'data': None}
+
                     send_data = make_api_call(job_data['request_num'], job_data['job_num'], machine_data, final_xrf_data)
                     if send_data['status']:
                         res_log_dicts = log_dicts_to_csv(final_xrf_data, job_data['job_num'], job_data['request_num'], machine_name)
@@ -252,65 +284,83 @@ def send_data():
                             clear_cache_file("job_data.json")
                             clear_cache_file("put_data.json")
                             clear_cache_file("get_result.json")
-                            logging.info(f'Job {job_data["job_num"]} completed successfully from {machine_name}')
-                            return render_template("home.html", res_data={'data':['Complete']}, put_data={'data':['completed']})
+                            logger.info(f"Job {job_data['job_num']} completed successfully from {machine_name}")
+                            return render_template("home.html", res_data={'data': ['Complete']}, put_data={'data': ['completed']})
                         else:
-                            logging.error(f'Error in send_data - logging dictionaries, {res_log_dicts}')
+                            logger.error(f"Error in logging dictionaries: {res_log_dicts['message']}")
                             return res_log_dicts
                     else:
-                        logging.error(f'Error in send_data - making api call, {send_data}')
+                        logger.error(f"Error in making API call: {send_data['message']}")
                         return send_data
                 else:
-                    logging.error(f'Error in send_data - loading final xrf data, {res_final_xrf_data}')
+                    logger.error(f"Error in loading final XRF data: {res_final_xrf_data['message']}")
                     return res_final_xrf_data
     except Exception as e:
-        logging.error(f'Error in send_data, {e}')
+        logger.exception(f"Exception in send_data: {str(e)}")
         return {'status': False, 'message': "Error in send_data - whole", 'data': e}
 
 def make_api_call(request_number, job_number, machine_data, final_xrf_data):
     try:
         # postxrfJobdetails
         post_url = API_URL + f"reqno={request_number}&jobno={job_number}"
+        logger.debug(f"Making API GET request to: {post_url}")
         res = requests.get(post_url, json=machine_data)
+        
         # postxrfJobdetails
         POST_URL = f"https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno={request_number}&jobno={job_number}"
-
         machine_data['xrfdetail'] = final_xrf_data
+        logger.debug(f"Making API POST request to: {POST_URL} with data: {machine_data}")
 
         res = requests.post(POST_URL, json=machine_data)
         if res.status_code == 200:
-            return {'status': True, 'message': "Data sent sucessfuly", 'data': res.json()}
+            logger.info("Data sent successfully.")
+            return {'status': True, 'message': "Data sent successfully", 'data': res.json()}
         else:
-            logging.error(f'Error in send_data, status code not 200, {res.json()}')
+            logger.error(f"Error in API response, status code not 200: {res.json()}")
             return {'status': False, 'message': "Error in send_data, status code not 200", 'data': res.json()}
     except Exception as e:
-        logging.error(f'Error in send_data, {e}')
+        logger.exception(f"Exception in make_api_call: {str(e)}")
         return {'status': False, 'message': "Error in make_api_call", 'data': e}
 
 def put_cache(filename, data):
     try:
         with open(filename, 'w') as f:
             json.dump(data, f)
-        return {'status': True, 'message': "Data put in cache sucessfuly", 'data': None}
-    except Exception as e:   
-        logging.error(f'Error in put_cache, {e}')
+        logger.info(f"Data successfully cached in {filename}.")
+        return {'status': True, 'message': "Data put in cache successfully", 'data': None}
+    except Exception as e:
+        logger.exception(f"Exception in put_cache: {str(e)}")
         return {'status': False, 'message': "Error in put_cache", 'data': e}
 
 def get_cache(filename):
     try:
+        if os.path.getsize(filename) == 0:
+            logger.error(f"File {filename} is empty.")
+            return {'status': False, 'message': f"File {filename} is empty.", 'data': None}
+
         with open(filename, 'r') as f:
             data = json.load(f)
-        return {'status': True, 'message': "Data fetched from cache sucessfuly", 'data': data}
+            if not data:
+                logger.error(f"File {filename} contains no data.")
+                return {'status': False, 'message': f"File {filename} contains no data.", 'data': None}
+        logger.info(f"Data fetched from cache successfully from {filename}.")
+        return {'status': True, 'message': "Data fetched from cache successfully", 'data': data}
+    except json.JSONDecodeError as e:
+        logger.error(f"Error decoding JSON from {filename}: {e}")
+        return {'status': False, 'message': f"Error decoding JSON from {filename}: {e}", 'data': None}
     except Exception as e:
-        logging.error(f'Error in get_cache, {e}')
+        logger.exception(f"Exception in get_cache: {str(e)}")
         return {'status': False, 'message': "Error in get_cache", 'data': e}
 
 def clear_cache_file(filename):
-    # Open the file in write mode and overwrite it with an empty JSON object
-    with open(filename, 'w') as file:
-        json.dump({}, file)
+    try:
+        with open(filename, 'w') as file:
+            json.dump({}, file)
+        logger.info(f"Cache file {filename} cleared.")
+    except Exception as e:
+        logger.exception(f"Exception in clearing cache file {filename}: {str(e)}")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5003)
-
-
+    port = 5003
+    logger.info(f"Running on 127.0.0.1:{port}")
+    app.run(debug=True, port=port)
