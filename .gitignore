@@ -5,3 +5,4 @@ env
 xrfcsv
 get_data.json
 *.json
+/.venv
