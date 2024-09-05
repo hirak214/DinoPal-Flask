@@ -163,7 +163,7 @@ def generate_xrf_reading(get_result):
 
                 send_temp['reading'] = f"{j}"
                 send_temp.pop('date')
-                send_temp['declare_purity'] = send_temp['declare_purity'][3:6]
+                send_temp['declare_purity'] = send_temp['declare_purity'][-3:]
                 send_data.append(send_temp)
         if len(send_data) == len_get_result_start * 2:
             logger.info("XRF readings generated successfully.")
@@ -200,6 +200,14 @@ def generate_metal_values(purity):
                 values['ag'] = round(random.uniform(100.0, 400.0), 3)
                 values['zn'] = round(random.uniform(20.0, 70.0), 3)
                 values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
+                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
+                    return values
+        elif purity == str(24):
+            while True:
+                values['au'] = round(995.000, 3)
+                values['ag'] = round(5.000, 3)
+                values['zn'] = round(0, 3)
+                values['cu'] = round(0, 3)
                 if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
                     return values
         else:
