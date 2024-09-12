@@ -237,7 +237,7 @@ def send_data():
                     send_data_res = make_api_call(job_data['request_num'], job_data['job_num'], machine_data, final_xrf_data)
                     if send_data_res['status']:
                         # save the data in a csv file
-                        csv_file = f"XRF_Data_{job_data['request_num']}_{job_data['job_num']}_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv"
+                        csv_file = f"XRF_Data_{job_data['request_num']}_{job_data['job_num']}_{machine_name}_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv"
                         csv_file_path = os.path.join(os.getcwd(), 'saved_files', csv_file)
                         # save the data in a csv file by pandas
                         df = pd.DataFrame(final_xrf_data)
