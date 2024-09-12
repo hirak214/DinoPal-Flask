@@ -7,6 +7,7 @@ import os
 import pathlib
 from datetime import datetime
 import logging
+import pandas as pd
 from config import JSON_DATA_FISCHER, JSON_DATA_MICROSPEC, API_URL
 
 # Define the log file path
@@ -37,8 +38,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    clear_cache_file("job_data.json")
+    clear_cache_file("put_data.json")
+    clear_cache_file("get_result.json")
+    clear_cache_file("get_data.json")
     logger.info("Rendering home page.")
-    return render_template("home.html", res_data={'data': ['Ready to use']}, put_data={'data': ['Ready']})
+    return render_template("home.html", res_data={'data': 'Ready to use'}, put_data={'data': 'Ready to use'}, message_data={'data': 'Ready to use'})
 
 @app.route("/get_data", methods=["POST"])
 def get_data():
@@ -46,8 +51,7 @@ def get_data():
         data = request.form.to_dict()
         logger.debug(f"Received form data: {data}")
 
-        if not is_dict_empty(data):
-            machine_data = None
+        if data:
             if data["machine"] == "machine1":
                 machine_data = JSON_DATA_MICROSPEC
             elif data["machine"] == "machine2":
@@ -67,7 +71,7 @@ def get_data():
                         res_data = res_data_from_server
                         res_data['status'] = "Data Received"
                         res_data['length_data'] = len(res_data['data'])
-                        return render_template("home.html", res_data=res_data, put_data={'data': ['Lesgo']})
+                        return render_template("home.html", res_data=res_data, put_data={'data': None, 'message': 'Data Received'}, message_data={'data': 'Data Received'})
                     else:
                         logger.error(f"Error in putting data in job_data.json: {res_cache['message']}")
                         return res_cache
@@ -84,10 +88,8 @@ def get_data():
 def get_data_from_server(request_number, job_number, machine_data):
     try:
         get_url = API_URL + f"reqno={request_number}&jobno={job_number}"
-        print(get_url)
         logger.debug(f"Making API request to: {get_url} with data: {machine_data}")
         res = requests.get(get_url, json=machine_data)
-        logger.debug(f"Raw response content: {res.text}")  # Log raw response content
 
         if res.status_code == 200:
             if res.json()[0] != {'Error': 'No data found !! Please Check Your Job no and Req No '}:
@@ -104,17 +106,6 @@ def get_data_from_server(request_number, job_number, machine_data):
         return {'status': False, 'message': str(e), 'data': None}
 
 
-def is_dict_empty(d):
-    try:
-        for value in d.values():
-            if value != "":
-                return False
-        logger.info("Dictionary is empty.")
-        return True
-    except Exception as e:
-        logger.exception(f"Exception in is_dict_empty: {str(e)}")
-        return {'status': False, 'message': "Error in is_dict_empty", 'data': e}
-
 @app.route("/generate_data", methods=["POST"])
 def generate_data():
     try:
@@ -127,13 +118,13 @@ def generate_data():
                 res_data = {'status': True, 'message': "Data re-fetched successfully", 'data': get_result['data']}
                 res_data['length_data'] = len(res_data['data'])
 
-                send_data = generate_xrf_reading(get_result['data'])
-                if send_data['status']:
-                    put_result = put_cache("put_data.json", send_data['data'])
+                generate_data_res = generate_xrf_reading(get_result['data'])
+                if generate_data_res['status']:
+                    put_result = put_cache("put_data.json", generate_data_res['data'])
                     if put_result['status']:
-                        send_data['generated_readings'] = len(send_data['data'])
+                        generate_data_res['generated_readings'] = len(generate_data_res['data'])
                         logger.info("Data generated and saved successfully.")
-                        return render_template("home.html", res_data=send_data, put_data=send_data)
+                        return render_template("home.html", res_data=res_data, put_data=generate_data_res, message_data={'data': 'Data Generated'})
                     else:
                         logger.error(f"Error in putting data in put_data.json: {put_result['message']}")
                         return put_result
@@ -163,7 +154,7 @@ def generate_xrf_reading(get_result):
 
                 send_temp['reading'] = f"{j}"
                 send_temp.pop('date')
-                send_temp['declare_purity'] = send_temp['declare_purity'][-3:]
+                send_temp['declare_purity'] = send_temp['declare_purity'].strip()[-3:]
                 send_data.append(send_temp)
         if len(send_data) == len_get_result_start * 2:
             logger.info("XRF readings generated successfully.")
@@ -212,54 +203,11 @@ def generate_metal_values(purity):
                     return values
         else:
             logger.error(f"Purity {purity} not valid. Must be 14, 18, or 22.")
-            return {'status': False, 'message': "Error in generate_metal_values, purity not 14, 18 or 22", 'data': None}
+            return {'status': False, 'message': "Error in generate_metal_values, purity not 14, 18, 22 or 24", 'data': None}
     except Exception as e:
         logger.exception(f"Exception in generate_metal_values: {str(e)}")
         return {'status': False, 'message': "Error in generate_metal_values", 'data': e}
 
-def generate_filenames(jobid):
-    directory = os.path.join(os.getcwd(), 'xrfcsv')
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-    return os.path.join(directory, f'{jobid}.csv')
-
-def reorder_dict(dictionary, fieldnames):
-    return {key: dictionary[key] for key in fieldnames}
-
-def log_dicts_to_csv(data, jobid, reqno, machine):
-    try:
-        filename = generate_filenames(jobid)
-        logger.debug(f"Saving data to {filename}")
-        fieldnames = ['tag_id', 'declare_purity', 'reading', 'gold', 'copper', 'silver', 'cadmium', 'iridium',
-                      'nickel', 'osmium', 'platinum', 'palladium', 'rhodium', 'ruthenium']
-        file_exists = os.path.isfile(filename)
-
-        with open(filename, 'a', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if not file_exists:
-                logger.debug("Writing CSV header.")
-                writer.writeheader()  # Write the header row if the file is newly created
-
-            for d in data:
-                reordered_dict = reorder_dict(d, fieldnames)
-                writer.writerow(reordered_dict)  # Write each reordered dictionary as a row in the CSV file
-
-        with open(filename, "a", newline='') as file:
-            csvwrite = csv.writer(file)
-            jobid_info = f"Job Id: {jobid}"
-            reqno_info = f"Req No: {reqno}"
-            count = f"Number of pieces: {len(data) / 2}"
-            today = datetime.today()
-            date = f"{today.day}/{today.month}/{today.year}"
-            donedate = f"Completion Date: {date}"
-            machine_info = f"Machine: {machine}"
-            metadata = [jobid_info, reqno_info, count, donedate, machine_info]
-            csvwrite.writerow(metadata)  # Write additional metadata as a new row
-        logger.info(f"Data logged successfully for jobid: {jobid}")
-        return {'status': True, 'message': "Data logged successfully", 'data': None}
-    except Exception as e:
-        logger.exception(f"Exception in log_dicts_to_csv: {str(e)}")
-        return {'status': False, 'message': "Error in log_dicts_to_csv", 'data': e}
 
 @app.route("/send_data", methods=["POST"])
 def send_data():
@@ -269,11 +217,11 @@ def send_data():
             if res_job_data['status']:
                 job_data = res_job_data['data']
                 logger.debug(f"Job data loaded: {job_data}")
-
+                
                 res_final_xrf_data = get_cache("put_data.json")
                 if res_final_xrf_data['status']:
                     final_xrf_data = res_final_xrf_data['data']
-                    logger.debug(f"Final XRF data loaded: {final_xrf_data}")
+
 
                     if job_data["machine"] == "machine1":
                         machine_data = JSON_DATA_MICROSPEC
@@ -284,22 +232,27 @@ def send_data():
                     else:
                         logger.error("Invalid machine specified.")
                         return {'status': False, 'message': "Invalid machine specified.", 'data': None}
+                    
 
-                    send_data = make_api_call(job_data['request_num'], job_data['job_num'], machine_data, final_xrf_data)
-                    if send_data['status']:
-                        res_log_dicts = log_dicts_to_csv(final_xrf_data, job_data['job_num'], job_data['request_num'], machine_name)
-                        if res_log_dicts['status']:
-                            clear_cache_file("job_data.json")
-                            clear_cache_file("put_data.json")
-                            clear_cache_file("get_result.json")
-                            logger.info(f"Job {job_data['job_num']} completed successfully from {machine_name}")
-                            return render_template("home.html", res_data={'data': ['Complete']}, put_data={'data': ['completed']})
-                        else:
-                            logger.error(f"Error in logging dictionaries: {res_log_dicts['message']}")
-                            return res_log_dicts
+                    send_data_res = make_api_call(job_data['request_num'], job_data['job_num'], machine_data, final_xrf_data)
+                    if send_data_res['status']:
+                        # save the data in a csv file
+                        csv_file = f"XRF_Data_{job_data['request_num']}_{job_data['job_num']}_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv"
+                        csv_file_path = os.path.join(os.getcwd(), 'saved_files', csv_file)
+                        # save the data in a csv file by pandas
+                        df = pd.DataFrame(final_xrf_data)
+                        df.to_csv(csv_file_path, index=False)
+                        logger.info(f"Data saved in CSV file: {csv_file_path}")
+                        # load the data as pandas dataframe
+                        clear_cache_file("job_data.json")
+                        clear_cache_file("put_data.json")
+                        clear_cache_file("get_result.json")
+                        clear_cache_file("get_data.json")
+                        logger.info(f"Job {job_data['job_num']} completed successfully from {machine_name}")
+                        return render_template("home.html", res_data={'data': 'Ready to use'}, put_data={'data': ['Ready']}, message_data={'data': 'Data Sent'})
                     else:
-                        logger.error(f"Error in making API call: {send_data['message']}")
-                        return send_data
+                        logger.error(f"Error in sending data: {send_data_res['message']}")
+                        return send_data_res
                 else:
                     logger.error(f"Error in loading final XRF data: {res_final_xrf_data['message']}")
                     return res_final_xrf_data
@@ -316,16 +269,17 @@ def make_api_call(request_number, job_number, machine_data, final_xrf_data):
         
         # postxrfJobdetails
         POST_URL = f"https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno={request_number}&jobno={job_number}"
-        machine_data['xrfdetail'] = final_xrf_data
-        logger.debug(f"Making API POST request to: {POST_URL} with data: {machine_data}")
+        machine_data_to_send = machine_data.copy()
+        machine_data_to_send['xrfdetail'] = final_xrf_data
+        logger.debug(f"Making API POST request to: {POST_URL} with data: {machine_data_to_send}")
 
-        res = requests.post(POST_URL, json=machine_data)
+        res = requests.post(POST_URL, json=machine_data_to_send)
         if res.status_code == 200:
             logger.info("Data sent successfully.")
             return {'status': True, 'message': "Data sent successfully", 'data': res.json()}
         else:
             logger.error(f"Error in API response, status code not 200: {res.json()}")
-            return {'status': False, 'message': "Error in send_data, status code not 200", 'data': res.json()}
+            return {'status': False, 'message': "Error in send_data, status code not 200", 'data': None}
     except Exception as e:
         logger.exception(f"Exception in make_api_call: {str(e)}")
         return {'status': False, 'message': "Error in make_api_call", 'data': e}
@@ -369,4 +323,18 @@ def clear_cache_file(filename):
         logger.exception(f"Exception in clearing cache file {filename}: {str(e)}")
 
 if __name__ == "__main__":
+    # check and create the saved_files directory
+    saved_files_dir = os.path.join(os.getcwd(), 'saved_files')
+    os.makedirs(saved_files_dir, exist_ok=True)
+    # check and create the logs directory
+    log_dir = os.path.join(os.getcwd(), 'logs')
+    os.makedirs(log_dir, exist_ok=True)
+    # check and create the app.log file
+    app_log_path = os.path.join(log_dir, 'app.log')
+    # check and create the cache files
+    cache_files = ["job_data.json", "put_data.json", "get_result.json", "get_data.json"]
+    for file in cache_files:
+        if not pathlib.Path(file).exists():
+            with open(file, 'w') as f:
+                json.dump({}, f)
     app.run(debug=True, port=5003, host='0.0.0.0')
