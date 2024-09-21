@@ -6,3 +6,5 @@ xrfcsv
 get_data.json
 *.json
 /.venv
+/saved_files
+/logs

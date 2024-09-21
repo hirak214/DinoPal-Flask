@@ -1002,3 +1002,320 @@ requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2024-09-12 23:15:11,698 - INFO - Cache file get_result.json cleared.
 2024-09-12 23:15:11,698 - INFO - Cache file get_data.json cleared.
 2024-09-12 23:15:11,698 - INFO - Rendering home page.
+2024-09-13 00:10:41,073 - INFO - Cache file job_data.json cleared.
+2024-09-13 00:10:41,074 - INFO - Cache file put_data.json cleared.
+2024-09-13 00:10:41,074 - INFO - Cache file get_result.json cleared.
+2024-09-13 00:10:41,075 - INFO - Cache file get_data.json cleared.
+2024-09-13 00:10:41,075 - INFO - Rendering home page.
+2024-09-13 00:16:32,688 - INFO - Cache file job_data.json cleared.
+2024-09-13 00:16:32,688 - INFO - Cache file put_data.json cleared.
+2024-09-13 00:16:32,689 - INFO - Cache file get_result.json cleared.
+2024-09-13 00:16:32,689 - INFO - Cache file get_data.json cleared.
+2024-09-13 00:16:32,689 - INFO - Rendering home page.
+2024-09-13 00:16:33,405 - INFO - Cache file job_data.json cleared.
+2024-09-13 00:16:33,407 - INFO - Cache file put_data.json cleared.
+2024-09-13 00:16:33,407 - INFO - Cache file get_result.json cleared.
+2024-09-13 00:16:33,408 - INFO - Cache file get_data.json cleared.
+2024-09-13 00:16:33,408 - INFO - Rendering home page.
+2024-09-13 00:19:08,987 - INFO - Cache file job_data.json cleared.
+2024-09-13 00:19:08,987 - INFO - Cache file put_data.json cleared.
+2024-09-13 00:19:08,987 - INFO - Cache file get_result.json cleared.
+2024-09-13 00:19:08,988 - INFO - Cache file get_data.json cleared.
+2024-09-13 00:19:08,988 - INFO - Rendering home page.
+2024-09-13 00:21:11,181 - INFO - Cache file job_data.json cleared.
+2024-09-13 00:21:11,181 - INFO - Cache file put_data.json cleared.
+2024-09-13 00:21:11,181 - INFO - Cache file get_result.json cleared.
+2024-09-13 00:21:11,182 - INFO - Cache file get_data.json cleared.
+2024-09-13 00:21:11,182 - INFO - Rendering home page.
+2024-09-13 07:55:18,976 - INFO - Cache file job_data.json cleared.
+2024-09-13 07:55:18,977 - INFO - Cache file put_data.json cleared.
+2024-09-13 07:55:18,978 - INFO - Cache file get_result.json cleared.
+2024-09-13 07:55:18,978 - INFO - Cache file get_data.json cleared.
+2024-09-13 07:55:18,978 - INFO - Rendering home page.
+2024-09-13 07:59:08,901 - INFO - Cache file job_data.json cleared.
+2024-09-13 07:59:08,901 - INFO - Cache file put_data.json cleared.
+2024-09-13 07:59:08,902 - INFO - Cache file get_result.json cleared.
+2024-09-13 07:59:08,902 - INFO - Cache file get_data.json cleared.
+2024-09-13 07:59:08,902 - INFO - Rendering home page.
+2024-09-13 07:59:23,419 - DEBUG - Received form data: {'request_num': '111327868', 'job_num': '116155876', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 07:59:23,419 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155876 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'}
+2024-09-13 07:59:23,618 - INFO - Data fetched successfully from API.
+2024-09-13 07:59:23,618 - INFO - Data fetched for request_num 111327868 and job_num 116155876.
+2024-09-13 07:59:23,619 - INFO - Data successfully cached in get_data.json.
+2024-09-13 07:59:23,620 - INFO - Data successfully cached in job_data.json.
+2024-09-13 07:59:26,789 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-13 07:59:26,796 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-13 07:59:26,796 - INFO - XRF readings generated successfully.
+2024-09-13 07:59:26,798 - INFO - Data successfully cached in put_data.json.
+2024-09-13 07:59:26,798 - INFO - Data generated and saved successfully.
+2024-09-13 07:59:39,760 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-13 07:59:39,760 - DEBUG - Job data loaded: {'request_num': '111327868', 'job_num': '116155876', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 07:59:39,806 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-13 07:59:39,807 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155876
+2024-09-13 07:59:39,968 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155876 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.84, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '1', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.853, 'silver': 13.308, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.336, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '1', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 222.601, 'silver': 18.989, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.845, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '2', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.066, 'silver': 16.906, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.926, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '2', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 227.228, 'silver': 15.335, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.621, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '3', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 227.731, 'silver': 14.788, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.779, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '3', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 229.019, 'silver': 13.385, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.99, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '4', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.875, 'silver': 14.851, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.932, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '4', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 223.776, 'silver': 19.197, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.469, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '5', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 222.333, 'silver': 18.369, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.674, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '5', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 219.21, 'silver': 19.835, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.435, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '6', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 219.151, 'silver': 19.712, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.868, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '6', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 223.586, 'silver': 15.478, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.087, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '7', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.158, 'silver': 15.636, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.854, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '7', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.499, 'silver': 15.045, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.327, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '8', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.342, 'silver': 15.749, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.283, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '8', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.769, 'silver': 17.659, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-13 07:59:40,202 - INFO - Data sent successfully.
+2024-09-13 07:59:40,238 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111327868_J116155876_FISCHER_20240913075940.csv
+2024-09-13 07:59:40,239 - INFO - Cache file job_data.json cleared.
+2024-09-13 07:59:40,240 - INFO - Cache file put_data.json cleared.
+2024-09-13 07:59:40,240 - INFO - Cache file get_result.json cleared.
+2024-09-13 07:59:40,241 - INFO - Cache file get_data.json cleared.
+2024-09-13 07:59:40,241 - INFO - Job 116155876 completed successfully from FISCHER
+2024-09-13 08:00:18,466 - DEBUG - Received form data: {'request_num': '111327868', 'job_num': '116155877', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 08:00:18,467 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155877 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'}
+2024-09-13 08:00:18,606 - INFO - Data fetched successfully from API.
+2024-09-13 08:00:18,607 - INFO - Data fetched for request_num 111327868 and job_num 116155877.
+2024-09-13 08:00:18,607 - INFO - Data successfully cached in get_data.json.
+2024-09-13 08:00:18,608 - INFO - Data successfully cached in job_data.json.
+2024-09-13 08:00:21,454 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-13 08:00:21,461 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-13 08:00:21,461 - INFO - XRF readings generated successfully.
+2024-09-13 08:00:21,462 - INFO - Data successfully cached in put_data.json.
+2024-09-13 08:00:21,462 - INFO - Data generated and saved successfully.
+2024-09-13 08:00:25,078 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-13 08:00:25,078 - DEBUG - Job data loaded: {'request_num': '111327868', 'job_num': '116155877', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 08:00:25,084 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-13 08:00:25,084 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155877
+2024-09-13 08:00:25,247 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155877 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.227, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '25', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.848, 'silver': 13.607, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.54, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '25', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 221.504, 'silver': 19.976, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.163, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '26', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.17, 'silver': 17.475, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.938, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '26', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 223.014, 'silver': 15.753, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.323, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '27', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 228.714, 'silver': 13.686, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 753.595, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '27', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 221.22, 'silver': 18.43, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-13 08:00:25,426 - INFO - Data sent successfully.
+2024-09-13 08:00:25,429 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111327868_J116155877_FISCHER_20240913080025.csv
+2024-09-13 08:00:25,429 - INFO - Cache file job_data.json cleared.
+2024-09-13 08:00:25,430 - INFO - Cache file put_data.json cleared.
+2024-09-13 08:00:25,430 - INFO - Cache file get_result.json cleared.
+2024-09-13 08:00:25,431 - INFO - Cache file get_data.json cleared.
+2024-09-13 08:00:25,431 - INFO - Job 116155877 completed successfully from FISCHER
+2024-09-13 08:00:54,438 - DEBUG - Received form data: {'request_num': '111327868', 'job_num': '116155874', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 08:00:54,439 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155874 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'}
+2024-09-13 08:00:54,580 - INFO - Data fetched successfully from API.
+2024-09-13 08:00:54,580 - INFO - Data fetched for request_num 111327868 and job_num 116155874.
+2024-09-13 08:00:54,581 - INFO - Data successfully cached in get_data.json.
+2024-09-13 08:00:54,582 - INFO - Data successfully cached in job_data.json.
+2024-09-13 08:00:57,009 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-13 08:00:57,016 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-13 08:00:57,017 - INFO - XRF readings generated successfully.
+2024-09-13 08:00:57,019 - INFO - Data successfully cached in put_data.json.
+2024-09-13 08:00:57,019 - INFO - Data generated and saved successfully.
+2024-09-13 08:01:03,124 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-13 08:01:03,124 - DEBUG - Job data loaded: {'request_num': '111327868', 'job_num': '116155874', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 08:01:03,135 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-13 08:01:03,135 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155874
+2024-09-13 08:01:03,277 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155874 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.536, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '13', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.078, 'silver': 15.719, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.564, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '13', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 223.763, 'silver': 15.6, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 753.346, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '14', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 227.655, 'silver': 12.676, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.881, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '14', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.886, 'silver': 14.519, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.048, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '15', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.75, 'silver': 14.225, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.523, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '15', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 229.588, 'silver': 13.297, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 753.887, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '16', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.282, 'silver': 15.135, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.73, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '16', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 219.409, 'silver': 19.84, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.209, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '17', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 223.071, 'silver': 19.328, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.94, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '17', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.525, 'silver': 18.007, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 753.345, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '18', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 222.448, 'silver': 17.97, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.884, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '18', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.093, 'silver': 15.309, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.812, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '19', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 220.687, 'silver': 17.726, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 753.315, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '19', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 221.963, 'silver': 18.63, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.271, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '20', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 227.783, 'silver': 14.716, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.642, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '20', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 228.271, 'silver': 14.131, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.983, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '21', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 222.413, 'silver': 17.817, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.174, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '21', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 220.671, 'silver': 18.637, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.256, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '22', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 227.591, 'silver': 14.111, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.611, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '22', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.309, 'silver': 12.796, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.417, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '23', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.569, 'silver': 12.903, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.119, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '23', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 227.768, 'silver': 14.327, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.607, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '24', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.417, 'silver': 16.72, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.515, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '24', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.076, 'silver': 17.761, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.69, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '28', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.666, 'silver': 16.299, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.669, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '28', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.297, 'silver': 18.245, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.775, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '29', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.027, 'silver': 14.611, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.773, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '29', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 224.765, 'silver': 18.355, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-13 08:01:03,533 - INFO - Data sent successfully.
+2024-09-13 08:01:03,548 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111327868_J116155874_FISCHER_20240913080103.csv
+2024-09-13 08:01:03,548 - INFO - Cache file job_data.json cleared.
+2024-09-13 08:01:03,549 - INFO - Cache file put_data.json cleared.
+2024-09-13 08:01:03,549 - INFO - Cache file get_result.json cleared.
+2024-09-13 08:01:03,550 - INFO - Cache file get_data.json cleared.
+2024-09-13 08:01:03,550 - INFO - Job 116155874 completed successfully from FISCHER
+2024-09-13 08:01:42,182 - DEBUG - Received form data: {'request_num': '111327868', 'job_num': '116155875', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 08:01:42,182 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155875 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'}
+2024-09-13 08:01:42,331 - INFO - Data fetched successfully from API.
+2024-09-13 08:01:42,331 - INFO - Data fetched for request_num 111327868 and job_num 116155875.
+2024-09-13 08:01:42,332 - INFO - Data successfully cached in get_data.json.
+2024-09-13 08:01:42,332 - INFO - Data successfully cached in job_data.json.
+2024-09-13 08:01:45,534 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-13 08:01:45,541 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-13 08:01:45,541 - INFO - XRF readings generated successfully.
+2024-09-13 08:01:45,542 - INFO - Data successfully cached in put_data.json.
+2024-09-13 08:01:45,542 - INFO - Data generated and saved successfully.
+2024-09-13 08:01:50,370 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-13 08:01:50,370 - DEBUG - Job data loaded: {'request_num': '111327868', 'job_num': '116155875', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-13 08:01:50,377 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-13 08:01:50,377 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155875
+2024-09-13 08:01:50,549 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111327868&jobno=116155875 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.723, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '10', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.792, 'silver': 16.064, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.457, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '10', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 223.424, 'silver': 15.759, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 754.694, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '11', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 219.989, 'silver': 18.951, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.006, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '11', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.091, 'silver': 16.011, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.183, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '12', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 228.274, 'silver': 13.428, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 752.86, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '12', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 226.788, 'silver': 13.919, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 751.956, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '9', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 225.819, 'silver': 15.458, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '750', 'gold': 750.726, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '9', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 229.535, 'silver': 13.033, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-13 08:01:50,739 - INFO - Data sent successfully.
+2024-09-13 08:01:50,743 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111327868_J116155875_FISCHER_20240913080150.csv
+2024-09-13 08:01:50,743 - INFO - Cache file job_data.json cleared.
+2024-09-13 08:01:50,744 - INFO - Cache file put_data.json cleared.
+2024-09-13 08:01:50,744 - INFO - Cache file get_result.json cleared.
+2024-09-13 08:01:50,744 - INFO - Cache file get_data.json cleared.
+2024-09-13 08:01:50,744 - INFO - Job 116155875 completed successfully from FISCHER
+2024-09-14 01:33:27,644 - INFO - Cache file job_data.json cleared.
+2024-09-14 01:33:27,697 - INFO - Cache file put_data.json cleared.
+2024-09-14 01:33:27,697 - INFO - Cache file get_result.json cleared.
+2024-09-14 01:33:27,700 - INFO - Cache file get_data.json cleared.
+2024-09-14 01:33:27,700 - INFO - Rendering home page.
+2024-09-14 15:26:31,674 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:26:31,675 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:26:31,676 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:26:31,676 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:26:31,676 - INFO - Rendering home page.
+2024-09-14 15:27:36,658 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:27:36,658 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:27:36,659 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:27:36,659 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:27:36,659 - INFO - Rendering home page.
+2024-09-14 15:28:12,225 - DEBUG - Received form data: {'request_num': '111360277', 'job_num': '116188035', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:28:12,225 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111360277&jobno=116188035 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae'}
+2024-09-14 15:28:12,425 - WARNING - No data found for the provided request number and job number.
+2024-09-14 15:28:12,426 - INFO - Data fetched for request_num 111360277 and job_num 116188035.
+2024-09-14 15:28:12,426 - ERROR - Error in getting data from server: Data Does not Exist
+2024-09-14 15:28:55,852 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:28:55,852 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:28:55,853 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:28:55,853 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:28:55,854 - INFO - Rendering home page.
+2024-09-14 15:28:57,882 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:28:57,889 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:28:57,889 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:28:57,890 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:28:57,890 - INFO - Rendering home page.
+2024-09-14 15:29:16,223 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:29:16,223 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:29:16,224 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:29:16,224 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:29:16,224 - INFO - Rendering home page.
+2024-09-14 15:29:29,933 - DEBUG - Received form data: {'request_num': '111351065', 'job_num': '116189010', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:29:29,933 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111351065&jobno=116189010 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae'}
+2024-09-14 15:29:30,088 - INFO - Data fetched successfully from API.
+2024-09-14 15:29:30,089 - INFO - Data fetched for request_num 111351065 and job_num 116189010.
+2024-09-14 15:29:30,089 - INFO - Data successfully cached in get_data.json.
+2024-09-14 15:29:30,090 - INFO - Data successfully cached in job_data.json.
+2024-09-14 15:29:34,189 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-14 15:29:34,196 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-14 15:29:34,196 - INFO - XRF readings generated successfully.
+2024-09-14 15:29:34,197 - INFO - Data successfully cached in put_data.json.
+2024-09-14 15:29:34,197 - INFO - Data generated and saved successfully.
+2024-09-14 15:29:37,470 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-14 15:29:37,471 - DEBUG - Job data loaded: {'request_num': '111351065', 'job_num': '116189010', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:29:37,476 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-14 15:29:37,477 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111351065&jobno=116189010
+2024-09-14 15:29:37,614 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111351065&jobno=116189010 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 590.371, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '1', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 110.772, 'silver': 232.642, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 593.195, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '1', 'cadmium': '0.0', 'palladium': '0.0', 'copper': -20.303, 'silver': 378.881, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-14 15:29:37,812 - INFO - Data sent successfully.
+2024-09-14 15:29:37,833 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111351065_J116189010_MICROSPEC_20240914152937.csv
+2024-09-14 15:29:37,833 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:29:37,834 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:29:37,834 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:29:37,835 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:29:37,835 - INFO - Job 116189010 completed successfully from MICROSPEC
+2024-09-14 15:29:51,473 - DEBUG - Received form data: {'request_num': '111350277', 'job_num': '116188035', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:29:51,473 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111350277&jobno=116188035 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae'}
+2024-09-14 15:29:51,627 - INFO - Data fetched successfully from API.
+2024-09-14 15:29:51,627 - INFO - Data fetched for request_num 111350277 and job_num 116188035.
+2024-09-14 15:29:51,628 - INFO - Data successfully cached in get_data.json.
+2024-09-14 15:29:51,629 - INFO - Data successfully cached in job_data.json.
+2024-09-14 15:29:56,878 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-14 15:29:56,884 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-14 15:29:56,884 - INFO - XRF readings generated successfully.
+2024-09-14 15:29:56,885 - INFO - Data successfully cached in put_data.json.
+2024-09-14 15:29:56,885 - INFO - Data generated and saved successfully.
+2024-09-14 15:29:58,937 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-14 15:29:58,937 - DEBUG - Job data loaded: {'request_num': '111350277', 'job_num': '116188035', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:29:58,943 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-14 15:29:58,943 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111350277&jobno=116188035
+2024-09-14 15:29:59,074 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111350277&jobno=116188035 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 593.749, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '3', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 172.125, 'silver': 208.771, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 587.571, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '3', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 23.543, 'silver': 359.424, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 588.585, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '4', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 142.789, 'silver': 229.345, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 592.311, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '4', 'cadmium': '0.0', 'palladium': '0.0', 'copper': -18.897, 'silver': 383.491, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-14 15:29:59,231 - INFO - Data sent successfully.
+2024-09-14 15:29:59,234 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111350277_J116188035_MICROSPEC_20240914152959.csv
+2024-09-14 15:29:59,235 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:29:59,235 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:29:59,236 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:29:59,236 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:29:59,236 - INFO - Job 116188035 completed successfully from MICROSPEC
+2024-09-14 15:30:12,336 - DEBUG - Received form data: {'request_num': '111350277', 'job_num': '116188038', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:30:12,336 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111350277&jobno=116188038 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae'}
+2024-09-14 15:30:12,491 - INFO - Data fetched successfully from API.
+2024-09-14 15:30:12,491 - INFO - Data fetched for request_num 111350277 and job_num 116188038.
+2024-09-14 15:30:12,492 - INFO - Data successfully cached in get_data.json.
+2024-09-14 15:30:12,492 - INFO - Data successfully cached in job_data.json.
+2024-09-14 15:30:14,768 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-14 15:30:14,777 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-14 15:30:14,777 - INFO - XRF readings generated successfully.
+2024-09-14 15:30:14,777 - INFO - Data successfully cached in put_data.json.
+2024-09-14 15:30:14,778 - INFO - Data generated and saved successfully.
+2024-09-14 15:30:16,985 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-14 15:30:16,985 - DEBUG - Job data loaded: {'request_num': '111350277', 'job_num': '116188038', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-14 15:30:16,991 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-14 15:30:16,991 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111350277&jobno=116188038
+2024-09-14 15:30:17,156 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111350277&jobno=116188038 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 593.167, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '1', 'cadmium': '0.0', 'palladium': '0.0', 'copper': -41.157, 'silver': 380.192, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 593.337, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '1', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 252.692, 'silver': 123.932, 'rhodium': '0.0', 'reading': '99'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 586.877, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '2', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 71.012, 'silver': 316.284, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 594.679, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '2', 'cadmium': '0.0', 'palladium': '0.0', 'copper': -30.851, 'silver': 399.937, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-14 15:30:17,397 - INFO - Data sent successfully.
+2024-09-14 15:30:17,540 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111350277_J116188038_MICROSPEC_20240914153017.csv
+2024-09-14 15:30:17,540 - INFO - Cache file job_data.json cleared.
+2024-09-14 15:30:17,541 - INFO - Cache file put_data.json cleared.
+2024-09-14 15:30:17,541 - INFO - Cache file get_result.json cleared.
+2024-09-14 15:30:17,541 - INFO - Cache file get_data.json cleared.
+2024-09-14 15:30:17,542 - INFO - Job 116188038 completed successfully from MICROSPEC
+2024-09-14 16:31:18,994 - INFO - Cache file job_data.json cleared.
+2024-09-14 16:31:18,995 - INFO - Cache file put_data.json cleared.
+2024-09-14 16:31:18,995 - INFO - Cache file get_result.json cleared.
+2024-09-14 16:31:18,996 - INFO - Cache file get_data.json cleared.
+2024-09-14 16:31:18,996 - INFO - Rendering home page.
+2024-09-15 12:56:58,564 - INFO - Cache file job_data.json cleared.
+2024-09-15 12:56:58,565 - INFO - Cache file put_data.json cleared.
+2024-09-15 12:56:58,566 - INFO - Cache file get_result.json cleared.
+2024-09-15 12:56:58,566 - INFO - Cache file get_data.json cleared.
+2024-09-15 12:56:58,567 - INFO - Rendering home page.
+2024-09-16 11:39:52,401 - INFO - Cache file job_data.json cleared.
+2024-09-16 11:39:52,402 - INFO - Cache file put_data.json cleared.
+2024-09-16 11:39:52,402 - INFO - Cache file get_result.json cleared.
+2024-09-16 11:39:52,403 - INFO - Cache file get_data.json cleared.
+2024-09-16 11:39:52,403 - INFO - Rendering home page.
+2024-09-18 02:21:15,258 - INFO - Cache file job_data.json cleared.
+2024-09-18 02:21:15,259 - INFO - Cache file put_data.json cleared.
+2024-09-18 02:21:15,260 - INFO - Cache file get_result.json cleared.
+2024-09-18 02:21:15,260 - INFO - Cache file get_data.json cleared.
+2024-09-18 02:21:15,260 - INFO - Rendering home page.
+2024-09-19 15:53:03,838 - INFO - Cache file job_data.json cleared.
+2024-09-19 15:53:03,839 - INFO - Cache file put_data.json cleared.
+2024-09-19 15:53:03,840 - INFO - Cache file get_result.json cleared.
+2024-09-19 15:53:03,840 - INFO - Cache file get_data.json cleared.
+2024-09-19 15:53:03,840 - INFO - Rendering home page.
+2024-09-19 15:53:18,508 - DEBUG - Received form data: {'request_num': '111393822', 'job_num': '116258402', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-19 15:53:18,509 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111393822&jobno=116258402 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae'}
+2024-09-19 15:53:18,690 - INFO - Data fetched successfully from API.
+2024-09-19 15:53:18,690 - INFO - Data fetched for request_num 111393822 and job_num 116258402.
+2024-09-19 15:53:18,691 - INFO - Data successfully cached in get_data.json.
+2024-09-19 15:53:18,691 - INFO - Data successfully cached in job_data.json.
+2024-09-19 15:54:17,655 - DEBUG - Received form data: {'request_num': '\t111393822\t', 'job_num': '116258402', 'machine': 'machine2', 'getdata': 'Get Data'}
+2024-09-19 15:54:17,655 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=	111393822	&jobno=116258402 with data: {'username': 'vbhcxrf1', 'key': 'a4f8b0c36ed68294e497819f3fe6c6f69940b4efedb916c13cfa2ae722d4ee09'}
+2024-09-19 15:54:17,860 - INFO - Data fetched successfully from API.
+2024-09-19 15:54:17,860 - INFO - Data fetched for request_num 	111393822	 and job_num 116258402.
+2024-09-19 15:54:17,861 - INFO - Data successfully cached in get_data.json.
+2024-09-19 15:54:17,861 - INFO - Data successfully cached in job_data.json.
+2024-09-19 15:55:34,193 - INFO - Cache file job_data.json cleared.
+2024-09-19 15:55:34,194 - INFO - Cache file put_data.json cleared.
+2024-09-19 15:55:34,195 - INFO - Cache file get_result.json cleared.
+2024-09-19 15:55:34,195 - INFO - Cache file get_data.json cleared.
+2024-09-19 15:55:34,195 - INFO - Rendering home page.
+2024-09-19 15:55:34,718 - INFO - Cache file job_data.json cleared.
+2024-09-19 15:55:34,726 - INFO - Cache file put_data.json cleared.
+2024-09-19 15:55:34,727 - INFO - Cache file get_result.json cleared.
+2024-09-19 15:55:34,727 - INFO - Cache file get_data.json cleared.
+2024-09-19 15:55:34,728 - INFO - Rendering home page.
+2024-09-19 15:57:50,755 - ERROR - File job_data.json contains no data.
+2024-09-19 15:58:19,228 - INFO - Cache file job_data.json cleared.
+2024-09-19 15:58:19,229 - INFO - Cache file put_data.json cleared.
+2024-09-19 15:58:19,229 - INFO - Cache file get_result.json cleared.
+2024-09-19 15:58:19,230 - INFO - Cache file get_data.json cleared.
+2024-09-19 15:58:19,230 - INFO - Rendering home page.
+2024-09-19 15:58:26,540 - DEBUG - Received form data: {'request_num': '111393822', 'job_num': '116258402', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-19 15:58:26,540 - DEBUG - Making API request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111393822&jobno=116258402 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae'}
+2024-09-19 15:58:26,779 - INFO - Data fetched successfully from API.
+2024-09-19 15:58:26,779 - INFO - Data fetched for request_num 111393822 and job_num 116258402.
+2024-09-19 15:58:26,780 - INFO - Data successfully cached in get_data.json.
+2024-09-19 15:58:26,780 - INFO - Data successfully cached in job_data.json.
+2024-09-19 15:58:40,714 - DEBUG - Received data for generating: {'generatedata': 'Generate Data'}
+2024-09-19 15:58:40,722 - INFO - Data fetched from cache successfully from get_data.json.
+2024-09-19 15:58:40,722 - INFO - XRF readings generated successfully.
+2024-09-19 15:58:40,723 - INFO - Data successfully cached in put_data.json.
+2024-09-19 15:58:40,723 - INFO - Data generated and saved successfully.
+2024-09-19 16:00:04,735 - INFO - Data fetched from cache successfully from job_data.json.
+2024-09-19 16:00:04,735 - DEBUG - Job data loaded: {'request_num': '111393822', 'job_num': '116258402', 'machine': 'machine1', 'getdata': 'Get Data'}
+2024-09-19 16:00:04,773 - INFO - Data fetched from cache successfully from put_data.json.
+2024-09-19 16:00:04,773 - DEBUG - Making API GET request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111393822&jobno=116258402
+2024-09-19 16:00:04,969 - DEBUG - Making API POST request to: https://huid.manakonline.in/MANAK/getxrfJobdetails?reqno=111393822&jobno=116258402 with data: {'username': 'vbhcxrf3', 'key': '6275ad0daa1389a195d582fdca687a5c1d499900ed49620375bf2bb89b7b5fae', 'xrfdetail': [{'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 586.601, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '2', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 110.82, 'silver': 257.744, 'rhodium': '0.0', 'reading': '1'}, {'nickel': '0.0', 'osmium': '0.0', 'declare_purity': '585', 'gold': 594.622, 'iridium': '0.0', 'ruthenium': '0.0', 'platinum': '0.0', 'tag_id': '2', 'cadmium': '0.0', 'palladium': '0.0', 'copper': 200.936, 'silver': 183.619, 'rhodium': '0.0', 'reading': '99'}]}
+2024-09-19 16:00:05,421 - INFO - Data sent successfully.
+2024-09-19 16:00:05,458 - INFO - Data saved in CSV file: D:\Hirak Desai\workspace\DinoPal-Flask\saved_files\XRF_Data_R111393822_J116258402_MICROSPEC_20240919160005.csv
+2024-09-19 16:00:05,459 - INFO - Cache file job_data.json cleared.
+2024-09-19 16:00:05,459 - INFO - Cache file put_data.json cleared.
+2024-09-19 16:00:05,459 - INFO - Cache file get_result.json cleared.
+2024-09-19 16:00:05,460 - INFO - Cache file get_data.json cleared.
+2024-09-19 16:00:05,460 - INFO - Job 116258402 completed successfully from MICROSPEC
+2024-09-19 16:00:13,446 - INFO - Cache file job_data.json cleared.
+2024-09-19 16:00:13,446 - INFO - Cache file put_data.json cleared.
+2024-09-19 16:00:13,446 - INFO - Cache file get_result.json cleared.
+2024-09-19 16:00:13,449 - INFO - Cache file get_data.json cleared.
+2024-09-19 16:00:13,449 - INFO - Rendering home page.
+2024-09-20 22:08:10,778 - INFO - Cache file job_data.json cleared.
+2024-09-20 22:08:10,780 - INFO - Cache file put_data.json cleared.
+2024-09-20 22:08:10,780 - INFO - Cache file get_result.json cleared.
+2024-09-20 22:08:10,781 - INFO - Cache file get_data.json cleared.
+2024-09-20 22:08:10,781 - INFO - Rendering home page.
