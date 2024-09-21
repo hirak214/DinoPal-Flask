@@ -169,41 +169,34 @@ def generate_xrf_reading(get_result):
 def generate_metal_values(purity):
     try:
         values = {}
-        if purity == str(22):
-            while True:
-                values['au'] = round(random.uniform(916.77, 917.80), 3)
-                values['ag'] = round(random.uniform(12.5, 20.0), 3)
-                values['zn'] = round(random.uniform(6, 7), 3)
-                values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
-                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
-                    return values
-        elif purity == str(18):
-            while True:
-                values['au'] = round(random.uniform(750.5, 755.0), 3)
-                values['ag'] = round(random.uniform(12.5, 20.0), 3)
-                values['zn'] = round(random.uniform(6, 7), 3)
-                values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
-                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
-                    return values
-        elif purity == str(14):
-            while True:
-                values['au'] = round(random.uniform(585.3, 595.0), 3)
-                values['ag'] = round(random.uniform(100.0, 400.0), 3)
-                values['zn'] = round(random.uniform(20.0, 70.0), 3)
-                values['cu'] = round(1000 - values['au'] - values['ag'] - values['zn'], 3)
-                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
-                    return values
-        elif purity == str(24):
-            while True:
-                values['au'] = round(995.000, 3)
-                values['ag'] = round(5.000, 3)
-                values['zn'] = round(0, 3)
-                values['cu'] = round(0, 3)
-                if (values['au'] + values['ag'] + values['cu'] + values['zn']) == 1000:
-                    return values
-        else:
-            logger.error(f"Purity {purity} not valid. Must be 14, 18, or 22.")
-            return {'status': False, 'message': "Error in generate_metal_values, purity not 14, 18, 22 or 24", 'data': None}
+    
+        # Define the ranges for different purities
+        purity_ranges = {
+            '22': {'au_range': (916.77, 917.80), 'ag_range': (12.5, 20.0), 'zn_range': (6, 7), 'cu_range': (40.0, 60.0)},
+            '18': {'au_range': (750.5, 755.0), 'ag_range': (12.5, 20.0), 'zn_range': (6, 7), 'cu_range': (200.0, 300.0)},
+            '14': {'au_range': (585.3, 595.0), 'ag_range': (100.0, 400.0), 'zn_range': (20.0, 70.0), 'cu_range': (100.0, 400.0)},
+            '24': {'au_range': (995.0, 995.0), 'ag_range': (5.0, 5.0), 'zn_range': (0.0, 0.0), 'cu_range': (0.0, 0.0)},
+            '20': {'au_range': (835.1, 848.0), 'ag_range': (50.0, 70.0), 'zn_range': (20.0, 30.0), 'cu_range': (70.0, 90.0)}
+        }
+        
+        if purity not in purity_ranges:
+            return "Invalid purity value"
+        
+        # Extract the range values for the given purity
+        ranges = purity_ranges[purity]
+
+        while True:
+            # Generate random values based on the ranges
+            values['au'] = format(round(random.uniform(*ranges['au_range']), 3), '.3f')
+            values['ag'] = format(round(random.uniform(*ranges['ag_range']), 3), '.3f')
+            values['zn'] = format(round(random.uniform(*ranges['zn_range']), 3), '.3f')
+            values['cu'] = format(round(1000 - float(values['au']) - float(values['ag']) - float(values['zn']), 3), '.3f')
+
+            # Check if the sum equals 1000 and 'cu' is within the valid range
+            total = float(values['au']) + float(values['ag']) + float(values['zn']) + float(values['cu'])
+            if round(total, 3) == 1000 and ranges['cu_range'][0] <= float(values['cu']) <= ranges['cu_range'][1]:
+                return values
+                
     except Exception as e:
         logger.exception(f"Exception in generate_metal_values: {str(e)}")
         return {'status': False, 'message': "Error in generate_metal_values", 'data': e}
