@@ -8,7 +8,7 @@ import pathlib
 from datetime import datetime
 import logging
 import pandas as pd
-from config import JSON_DATA_FISCHER, JSON_DATA_MICROSPEC, API_URL
+from config import JSON_DATA_FISCHER, JSON_DATA_MICROSPEC, JSON_DATA_KM_FISCHER, API_URL
 
 # Define the log file path
 log_dir = os.path.join(os.getcwd(), 'logs')
@@ -218,10 +218,13 @@ def send_data():
 
                     if job_data["machine"] == "machine1":
                         machine_data = JSON_DATA_MICROSPEC
-                        machine_name = "MICROSPEC"
+                        machine_name = "KM_MICROSPEC"
                     elif job_data["machine"] == "machine2":
                         machine_data = JSON_DATA_FISCHER
-                        machine_name = "FISCHER"
+                        machine_name = "ZB_FISCHER"
+                    elif job_data["machine"] == "machine3":
+                        machine_data = JSON_DATA_KM_FISCHER
+                        machine_name = "KM_FISCHER"
                     else:
                         logger.error("Invalid machine specified.")
                         return {'status': False, 'message': "Invalid machine specified.", 'data': None}
