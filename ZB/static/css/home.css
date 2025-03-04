@@ -1,0 +1,144 @@
+/* Add space above Job Data and Generated Data sections */
+.u-container-layout-2, .u-container-layout-3 {
+  padding: 20px 20px 0; /* Added space above both sections */
+}
+
+/* Align h4 headings (Job Data and Generated Data) */
+.u-text-1, .u-text-2 {
+  margin-bottom: 20px; /* Added space between the header and tables */
+  padding: 0 20px;
+  display: inline-block;
+}
+
+/* Symmetric tables */
+.u-table-1, .u-table-2 {
+  width: 100%;
+  margin: 0;
+}
+
+/* Ensure tables are aligned */
+.u-layout-cell-2, .u-layout-cell-3 {
+  width: 48%; /* Keep both cells equal width */
+}
+
+/* Ensure buttons are aligned nicely */
+.u-container-layout-3 .u-form-2, .u-container-layout-3 form {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+/* Align buttons below Generated Readings */
+.u-container-layout-3 .u-form-group.u-form-submit {
+  margin-top: 20px;
+}
+
+.marg-r {
+  margin-left: 23em;
+}
+
+.two {
+  margin-left: 25em;
+}
+
+.scrollable-table {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.u-table-entity {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.u-table-entity thead th {
+  position: sticky;
+  /* Fix the header in place */
+  top: 0;
+  /* Ensure it sticks to the top when scrolling */
+  background: rgb(150, 226, 222);
+  /* Optional: Set a background color for the header */
+  z-index: 1;
+  /* Ensure the header is always on top */
+  border-bottom: 1px solid #ddd;
+  /* Optional: Add a bottom border */
+}
+
+.u-table-cell {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.u-table-alt-palette-1-light-3 {
+  background-color: #f9f9f9;
+}
+
+.u-table th,
+.u-table td {
+  text-align: left;
+  padding: 8px;
+}
+
+.u-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Adjust media queries */
+@media (max-width: 1199px) {
+  .u-layout-cell-2, .u-layout-cell-3 {
+    width: 100%; /* Full width on smaller screens */
+    margin-bottom: 20px;
+  }
+  .u-layout-row {
+    flex-direction: column; /* Stack elements vertically */
+  }
+}
+
+@media (max-width: 991px) {
+  .u-form-1 {
+    width: 660px;
+  }
+
+  .u-table-1, .u-table-2 {
+    width: 360px;
+  }
+
+  .u-layout-cell-2, .u-layout-cell-3 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-form-1 {
+    width: 520px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-form-1 {
+    width: 320px;
+  }
+
+  .u-layout-cell-2, .u-layout-cell-3 {
+    min-height: 496px;
+  }
+
+  .u-text-1 {
+    width: auto;
+    margin-left: 16px;
+  }
+
+  .u-table-1, .u-table-2 {
+    width: 340px;
+  }
+}
+
+
