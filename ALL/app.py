@@ -172,7 +172,7 @@ def generate_metal_values(purity):
     
         # Define the ranges for different purities
         purity_ranges = {
-            '22': {'au_range': (916.77, 917.80), 'ag_range': (12.5, 20.0), 'zn_range': (6, 7), 'cu_range': (40.0, 60.0)},
+            '22': {'au_range': (916.90, 919.20), 'ag_range': (12.5, 20.0), 'zn_range': (6, 7), 'cu_range': (40.0, 60.0)},
             '18': {'au_range': (750.5, 755.0), 'ag_range': (12.5, 20.0), 'zn_range': (6, 7), 'cu_range': (200.0, 300.0)},
             '14': {'au_range': (585.3, 595.0), 'ag_range': (100.0, 400.0), 'zn_range': (20.0, 70.0), 'cu_range': (100.0, 400.0)},
             '24': {'au_range': (995.0, 995.0), 'ag_range': (5.0, 5.0), 'zn_range': (0.0, 0.0), 'cu_range': (0.0, 0.0)},

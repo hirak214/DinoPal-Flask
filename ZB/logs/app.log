@@ -1319,3 +1319,8 @@ requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2024-09-20 22:08:10,780 - INFO - Cache file get_result.json cleared.
 2024-09-20 22:08:10,781 - INFO - Cache file get_data.json cleared.
 2024-09-20 22:08:10,781 - INFO - Rendering home page.
+2025-03-16 04:07:47,683 - INFO - Cache file job_data.json cleared.
+2025-03-16 04:07:47,683 - INFO - Cache file put_data.json cleared.
+2025-03-16 04:07:47,684 - INFO - Cache file get_result.json cleared.
+2025-03-16 04:07:47,684 - INFO - Cache file get_data.json cleared.
+2025-03-16 04:07:47,684 - INFO - Rendering home page.
